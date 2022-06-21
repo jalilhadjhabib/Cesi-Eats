@@ -1,49 +1,180 @@
 <template>
 <div class="">
-  <table class="table ">
-  <thead>
-    <tr>
-      <th scope="col text-center">Article Name</th>
-      <th scope="col">Action</th>
+  <div>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amatic+SC">
 
-    </tr>
-  </thead>
-  <tbody>
-    <tr  :class="{ active: index == currentIndex }"
+
+  </div>
+
+
+    <div>
+
+    <nav class="navbar navbar-expand-lg" style="background:black;height:80px;">
+  <a class="navbar-brand" href="/home" style="margin-left:40px;font-size:40px;color:white;font-family:Helvetica"">Cesi</a>
+    <a class="navbar-brand" href="/home" style="font-size:40px;color:#64F58D;font-family:Helvetica">Eats</a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+</nav>
+
+
+    </div>
+    <h1 style="font-weight: 700;padding-top:20px;">Votre Panier</h1>
+<div style="padding-top:50px;">
+  <div class="container" style="background: #FBFBFF;box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
+	<table id="cart" class="table table-hover table-condensed" >
+    				<thead>
+						<tr>
+							<th style="width:50%">Produit</th>
+							<th style="width:10%">Prix</th>
+              	<th style="width:20%">Photo du produit</th>
+                <th style="width:20%">Action sur le produit</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr :class="{ active: index == currentIndex }"
           v-for="(Article, index) in Articles"
           :key="index">
-      <td>
-        <h5 class="card-title">{{Article.name}}</h5>
-        <small>{{Article.price}}</small>
-      </td>
+							<td data-th="Product">
+								<div class="row">
+									<div class="col-sm-2 hidden-xs"></div>
+									<div class="col-sm-10">
+										<h4 class="nomargin">{{Article.name}}</h4>
+										<p>Description</p>
+									</div>
+								</div>
+							</td>
+							<td data-th="Price">{{Article.price}} DA</td>
+							<td><img class="img-fluid" style="width:300px;height:100px;" :src="'http://127.0.0.1:4000\\'+Article.picture.path" alt="Card image cap"></img></td>
+							<td class="actions" data-th="">
+								<button class="btn btn-info btn-sm"><i class="fa fa-refresh"></i></button>
+								<button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>								
+							</td>
+						</tr>
+            
+					</tbody>
+					<tfoot>
+						<tr class="visible-xs">
+<td class="d-flex justify-content-left">
+                 
+
+          
+         
+             <div><label for="payment">Méthode de paiement </label></div>
+              <div class="select">
+   <select name="format" id="format" >
+      <option v-model="order.payementMethod='Paiement main a main'"
+                name="payementMethod">Paiement Main a main</option>
+
+                <option v-model="order.payementMethod='Paiement En ligne'"
+                name="payementMethod">Paiement En ligne</option>
       
-      <td>
-        <!-- <button @click="AddToCart(Article._id)"  class="btn btn-sm mx-1 btn-success" ><i class="bi bi-bag-plus-fill"></i></button> -->
-        <span class="badge pill mx-3 badge-success">1</span>
-      </td>
-      
-    </tr>
-    <tr>
-        <td class="text-right justify-text-center">
-            <button class="btn mx-3 btn-danger">Supprimer</button>
-            </td>
-         <td class="d-flex justify-content-left">
-            <div class="form-group">
-                <label>payement Method</label>
-                <input type="text" 
-                required
-                v-model="order.payementMethod"
-                name="payementMethod"
-                class="form-control">
-            </div>
-            <p>{{this.order.total}}</p>
-            <button @click="saveorder"  class="btn mx-3 btn-success ">Commander</button>
-        </td>
-    </tr>
-  </tbody>
-</table>
+   </select>
+</div>
+            
+        </td>						</tr>
+						<tr>
+							<td><a href="/client/displayarticle" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue vos achats</a></td>
+							<td colspan="2" class="hidden-xs"></td>
+							<td class="hidden-xm text-center"><strong><p style="width: 120px;padding-top: 20px;">Total {{this.order.total}} DA</p></strong></td>
+							<td><button class="btn btn-success" style="width: 200px;" @click="saveorder">Commander <i class="fa fa-angle-right"></i></button></td>
+						</tr>
+					</tfoot>
+				</table>
+        </div>
+</div>
+
+
+
+<div style="padding-top:50px;">
+<div><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></div>
+
+
+<footer data-aos="fade-up" class="text-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 col-lg- col-xl-3">
+          <strong><h5>
+            À propos
+          </h5></strong>
+          <hr class="bg-white mb-2 mt-0 d-inline-block mx-auto w-25">
+          <p class="mb-0">
+            Cesi Eats est un service de livraison de plats cuisinés lancé par 
+            A4 Oran en 2022 et basé à Oran, en Algérie. Les commandes 
+            sont prises via le site web de Cesi Eats auprès 
+            des restaurants partenaires et sont livrées par des coursiers indépendants.
+          </p>
+        </div>
+        <div class="col-md-4 col-lg-3 col-xl-3">
+          <strong><h5>
+            Contact
+          </h5></strong>
+          <hr class="bg-white mb-2 mt-0 d-inline-block mx-auto w-25">
+          <ul class="list">
+            <li><i class="fa fa-envelope mr-2"></i> contact@cesieats.dz</li>
+            <li><i class="fa fa-phone mr-2"></i> (+213) 077 77 77 77</li>
+            <li><i class="fa fa-phone mr-2"></i> (+213) 077 77 77 77</li>
+            <li><i class="fa fa-phone mr-2"></i> (+213) 077 77 77 77</li>
+          </ul>
+        </div>
+        <div class="col-md-2 col-lg-2 col-xl-3 mx-auto">
+           <strong><h5>
+            Retrouvez-nous sur :
+          </h5></strong>
+          <hr class="bg-white mb-2 mt-0 d-inline-block mx-auto w-25">
+          <ul class="list-unstyled">
+            <li>
+              <a href="#" class="fb btn" target="_blank" style="background-color: lightgray;color: white;"><i class="fa fa-facebook fa-fw fa-2x" style="" ></i></a>
+            </li>
+            <li>
+              <br>
+            <a href="#" class="twitter btn" target="_blank" style="background-color: lightgray;color: white;"><i class="fa fa-twitter fa-fw fa-2x"></i></a>
+            </li>
+            <li>
+              <br>
+            <a href="#" class="twitter btn" target="_blank" style="background-color: lightgray;color: white;"><i class="fa fa-instagram fa-fw fa-2x"></i></a>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="col">
+          <center>
+            <strong><p>Copyright © 2022. All rights reserved to Cesi Oran A4.</p></strong>
+          </center>
+          </div>
+          </div>
+          </div>
+        </footer>
+        </div>
+  
+
+
+
+
+
+
+
+
   </div> 
+
+
+
+
+
+
+
+
+
+
 </template>
+<style>@import '../assets/css/Cart.css';</style>
+
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <script>
 import ArticleService from "../services/ArticleService";
 import CartService from "../services/CartService";

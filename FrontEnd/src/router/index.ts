@@ -65,16 +65,16 @@ const routes: Array<RouteConfig> = [
     component: () => import("../components/ArticleAdd.vue")
   },
   {
-    path: "/client/displayarticle",
-    name: "article",
-    //params: true,
-    component: () => import("../components/ArticleList.vue")
-  },
-  {
     path: "/restaurateur/articleofmenu/",
     name: "articleofmenu",
     //params: true,
     component: () => import("../components/ArticlesOfMenu.vue")
+  },
+  {
+    path: "/client/displayarticle",
+    name: "article",
+    //params: true,
+    component: () => import("../components/ArticleList.vue")
   },
   {
     path: "/client/cart",

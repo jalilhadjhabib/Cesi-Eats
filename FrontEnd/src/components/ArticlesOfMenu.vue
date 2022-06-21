@@ -4,33 +4,7 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amatic+SC">
   </div>
-  <!--
-  <table class="table ">
-  <thead>
-    <tr>
-      <th scope="col text-center">Menu</th>
-      <th scope="col justify-text-center">Menu picture</th>
-      <th scope="col">Action</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr  :class="{ active: index == currentIndex }"
-          v-for="(Menu, index) in Menus"
-          :key="index">
-      <td>
-        <h5 class="card-title">{{Menu.name}}</h5>
-      </td>
-      <td>
-        <img class="img-fluid" :src="'http://127.0.0.1:4000\\'+Menu.picture.path" alt="Card image cap">
-      </td>
-      <td>
-        <button @click="DropMenu(Menu._id)"  class="btn btn-sm mx-1 btn-danger" ><i class="bi bi-trash3"></i></button>
-        <button class="btn btn-sm mx-1 btn-primary"><i class="bi bi-pencil-square"></i></button>  
-      </td>
-    </tr>
-    
-  </tbody>
-</table>-->
+
 
     <div>
 

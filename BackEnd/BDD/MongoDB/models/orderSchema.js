@@ -5,6 +5,9 @@ bddConnect('CESIEATS');
 
 const orderSchema = new mongoose.Schema({
     id_commande : Number,
+    ids_article :  {
+        type : Array
+    },
     n_commande : Number,
     date : Date,
     total : Number,

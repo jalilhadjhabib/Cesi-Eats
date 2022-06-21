@@ -1,0 +1,206 @@
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 480px) {
+    .logoimg{
+        visibility: hidden;
+    }
+    .headerh1{
+    margin:auto;
+    font-size: 20px;
+    font-family: UberMove, sans-serif;
+    font-weight: bolder;color:white;
+    text-shadow: 5px 5px 5px black;
+    }
+    .newsletterh1{
+        padding-top: 20px;
+        width: 350px;
+        font-size: 20px;
+        color:white;
+        font-weight: 700;
+        text-shadow: 5px 5px 5px black;
+      }
+      #newsletterinput{
+        padding: 0.875rem 1rem;
+        font-size: .875rem;
+        width: 350px;
+        border: none;
+        height: 4rem!important;font-family: Muli,Merriweather,Georgia,serif;
+      }
+      #rowheader {
+        margin-top: 20px;
+        height:800px;
+        display: grid;
+        gap: 30px;
+        background-color: transparent;
+        padding: 10px;
+
+      }
+      #rowheader .item {
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+        background-color: white;
+        color: black;
+        text-align: center;
+        padding: 20px 0;
+        font-size: 30px;
+        height: 200px;
+        transition: .5s;
+      }
+}
+
+/* Smartphones (landscape) ----------- */
+@media only screen 
+and (min-width : 321px) {
+    
+}
+
+/* Smartphones (portrait) ----------- */
+@media only screen 
+and (max-width : 320px) {
+    .logoimg{
+        visibility: hidden;
+    }
+    .headerh1{
+        margin:auto;
+        font-size: 15px;
+        font-family: UberMove, sans-serif;
+        font-weight: bolder;color:white;
+        text-shadow: 5px 5px 5px black;
+        }
+        .newsletterh1{
+            padding-top: 20px;
+            width: 350px;
+            font-size: 20px;
+            color:white;
+            font-weight: 700;
+            text-shadow: 5px 5px 5px black;
+          }
+          #newsletterinput{
+            padding: 0.875rem 1rem;
+            font-size: .875rem;
+            width: 350px;
+            border: none;
+            height: 4rem!important;font-family: Muli,Merriweather,Georgia,serif;
+          }
+          #rowheader {
+            margin-top: 300px;
+            height:400px;
+            display: grid;
+            gap: 30px;
+            background-color: transparent;
+            padding: 10px;
+    
+          }
+          #rowheader .item {
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+            background-color: white;
+            color: black;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 30px;
+            height: 200px;
+            transition: .5s;
+          }
+}
+
+
+/* iPads (portrait and landscape) ----------- */
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) {
+/* Styles */
+}
+
+/* iPads (landscape) ----------- */
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+and (orientation : landscape) {
+/* Styles */
+}
+
+/* iPads (portrait) ----------- */
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+and (orientation : portrait) {
+    #rowheader {
+        margin-top: 300px;
+        height:400px;
+        display: grid;
+        gap: 30px;
+        background-color: transparent;
+        padding: 10px;
+        grid-template-rows: 50px 100px;
+        grid-template-columns: auto auto auto;
+      }
+      #rowheader .item {
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+        background-color: white;
+        color: black;
+        text-align: center;
+        padding: 20px 0;
+        font-size: 30px;
+        height: 200px;
+        transition: .5s;
+      }
+}
+
+/* Desktops and laptops ----------- */
+@media only screen 
+and (min-width : 1224px) {
+/* Styles */
+#rowheader {
+    margin-top: 300px;
+    height:400px;
+    display: grid;
+    gap: 30px;
+    background-color: transparent;
+    padding: 10px;
+    grid-template-rows: 50px 100px;
+    grid-template-columns: auto auto auto;
+  }
+  #rowheader .item {
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    background-color: white;
+    color: black;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 30px;
+    height: 200px;
+    transition: .5s;
+  }
+}
+
+/* Large screens ----------- */
+@media only screen 
+and (min-width : 1824px) {
+    #rowheader {
+        margin-top: 300px;
+        height:400px;
+        display: grid;
+        gap: 30px;
+        background-color: transparent;
+        padding: 10px;
+        grid-template-rows: 50px 100px;
+        grid-template-columns: auto auto auto;
+      }
+      #rowheader .item {
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+        background-color: white;
+        color: black;
+        text-align: center;
+        padding: 20px 0;
+        font-size: 30px;
+        height: 200px;
+        transition: .5s;
+      }
+    }
+
+
+/* iPhone 4 ----------- */
+@media
+only screen and (-webkit-min-device-pixel-ratio : 1.5),
+only screen and (min-device-pixel-ratio : 1.5) {
+/* Styles */
+}

@@ -1,0 +1,28 @@
+#rowheader .item:hover, #rowheader .item:focus, #rowheader .item:active {
+  box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.5);
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+
+  .newsletter{
+    height: 400px;
+    background: url("@/assets/images/newsletter.png") ;
+ }
+.newsletterh1{
+  padding-top: 20px;
+  width: 570px;
+  color:white;
+  font-weight: 700;
+  text-shadow: 5px 5px 5px black;
+}
+#newsletterinput{
+  padding: 0.875rem 1rem;
+  font-size: .875rem;
+  width: 500px;
+  border: none;
+  height: 4rem!important;font-family: Muli,Merriweather,Georgia,serif;
+}
+
+
+

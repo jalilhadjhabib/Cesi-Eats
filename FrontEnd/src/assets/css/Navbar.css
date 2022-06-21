@@ -1,0 +1,51 @@
+
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+}
+nav {
+  padding: 30px;
+  background:transparent; 
+  height:96px;
+  width: 100%;
+  position: -webkit-sticky;
+  position: sticky;
+}
+
+nav.scrolled {
+  background: white;
+}
+.logoimg{
+  width: 30%;margin-top:20px;margin-left: -150px;text-shadow: 4px 4px 4px black;
+}
+.sidemenulogo{
+    width: 30%;margin-top:100px;
+}
+nav a {
+  font-weight: bold;
+  color: red;
+}
+nav a.router-link-exact-active {
+  color: #42b983;
+}
+
+body{
+  background: url(https://www.allorecettes.com/wp-content/uploads/2021/05/Sans-titre-73.jpg) top/contain no-repeat;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+footer
+{
+	background: black;
+	padding: 40px;
+	transition: .5s;
+}
+footer a
+{
+	color: black!important;
+	transition: .5s;
+}

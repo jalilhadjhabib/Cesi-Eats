@@ -12,5 +12,8 @@ class ArticleService {
   getbymenu(id){
     return http.get(`/article/getbymenu/${id}`);
   }
+  get(id){
+    return http.get(`/article/get/${id}`);
+  }
 }
 export default new ArticleService();

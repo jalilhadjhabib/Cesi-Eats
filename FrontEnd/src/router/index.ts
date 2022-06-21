@@ -65,7 +65,7 @@ const routes: Array<RouteConfig> = [
     component: () => import("../components/ArticleAdd.vue")
   },
   {
-    path: "/restaurateur/displayarticle",
+    path: "/client/displayarticle",
     name: "article",
     //params: true,
     component: () => import("../components/ArticleList.vue")
@@ -75,7 +75,12 @@ const routes: Array<RouteConfig> = [
     name: "articleofmenu",
     //params: true,
     component: () => import("../components/ArticlesOfMenu.vue")
-  }
+  },
+  {
+    path: "/client/cart",
+    name: "displaycart",
+    component: () => import("../components/CartList.vue")
+  }   
   
 ]
 

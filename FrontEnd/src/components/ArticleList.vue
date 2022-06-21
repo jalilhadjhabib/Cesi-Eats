@@ -75,8 +75,7 @@
     <img class="img-fluid" style="width:150px;height:150px;" :src="'http://127.0.0.1:4000\\'+Article.picture.path" alt="Card image cap">
 </div>
 <div>
-<button @click="DropArticle(Article._id)"  class="btn btn-md mx-1 btn-danger" >Supprimer l'article</button>
-        <button class="btn btn-md mx-1 btn-warning">Editer l'article</button>
+<button @click="AddToCart(Article._id)" class="btn btn-md mx-1 btn-success" >Ajouter au panier</button>
 </div>
 </p>
 
@@ -171,6 +170,11 @@
 
 <script>
 import ArticleService from "../services/ArticleService";
+import CartService from "../services/CartService";
+
+var cart = [];
+
+
 export default {
   name: "Articles-list",
   data() {
@@ -193,14 +197,20 @@ export default {
         });
     
     },
-    DropArticle(id){
-      ArticleService.delete(id)
-        .then(response => {
-          console.log(response.data);
-        })
-        .catch(e => {
-          console.log(e);
-        });
+    AddToCart(id){
+      var cartCookie = CartService.getCookie('testuser');
+      
+      cart.push(id);
+      if (cartCookie == null) { 
+        cartCookie = CartService.setCookie('testuser',cart,7);
+        console.log(cartCookie);
+      }
+      else {
+        cart.push(cartCookie[0]);
+        cartCookie = CartService.setCookie('testuser',cart,7);
+        console.log(cartCookie);
+      }
+
     }
     
   },

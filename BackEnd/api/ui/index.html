@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<head>
+<!-- CSS only -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+
+
+
+</head>
+<body>
+
+
+    <div id="app" class="container">
+        <h3 class="d-flex justify-content-center">
+            CESI-EATS
+        </h3>
+        <h5 class="d-flex justify-content-center">
+            LIST OF REGISTERED CLIENTS
+
+
+        </h5>
+
+        <nav class="navbar navbar-expand-sm bg-light navbar-dark">
+
+            <ul class="navbar-nav">
+
+            <li class="nav-itel m-1">
+                <router-link class="btn btn-light btn-outline-primary"
+                to='/home'>Home</router-link>   
+            </li>
+            <li class="nav-itel m-1">
+                <router-link class="btn btn-light btn-outline-primary"
+                to='/clients'>Clients</router-link>   
+            </li>
+            </ul>
+
+
+        </nav>
+
+        <router-view></router-view>
+
+    </div>
+
+    <script src="variables.js"></script>
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="https://unpkg.com/vue-router@4"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0-alpha.1/axios.min.js"></script>  
+    <script src="home.js"></script>
+    <script src="clients.js"></script>
+    <script src="app.js"></script>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+
+
+
+
+</html>

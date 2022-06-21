@@ -1,0 +1,6 @@
+1- ouvrir terminal dans la directory MongoDB 
+2- tapez npm install
+EN CAS DE BUG 	: Si jade n'est pas installé : tapez npm install jade
+		: Si mongoose n'est pas installé : tapez npm install mongoose
+3- tapez npm run start
+ 

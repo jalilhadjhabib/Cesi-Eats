@@ -1,0 +1,29 @@
+USE [CESI-EATS]
+GO
+
+/****** Object:  Table [dbo].[Dev_Logs]    Script Date: 12/06/2022 20:26:43 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Dev_Logs](
+	[LogsID] [uniqueidentifier] NOT NULL,
+	[DevID] [uniqueidentifier] NULL,
+	[LogInTime] [datetime] NULL,
+	[LogOutTime] [datetime] NULL,
+ CONSTRAINT [PK_Dev_Logs] PRIMARY KEY CLUSTERED 
+(
+	[LogsID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[Dev_Logs]  WITH CHECK ADD  CONSTRAINT [FK_Dev_Logs] FOREIGN KEY([DevID])
+REFERENCES [dbo].[Dev] ([DevID])
+GO
+
+ALTER TABLE [dbo].[Dev_Logs] CHECK CONSTRAINT [FK_Dev_Logs]
+GO
+

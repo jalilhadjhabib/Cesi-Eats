@@ -1,0 +1,1 @@
+const home={template:'<h1>This Is The Home Pages</h1>'}

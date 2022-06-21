@@ -1,0 +1,7 @@
+1- Installer SQL SERVER 2019
+2- INSTALLER MSSMS (Microsoft sql server Management studio 18.1) 
+ lien > https://aka.ms/ssmsfullsetup
+3- Ouvrir MSSMS > Connectez-vous
+4- Drag and drop le fichier "CESI-EATS.sql" sur MSSMS 
+5- Executer le script dans l'outil 
+6- Drag and drop les fichier".sql" dans le dossier "Tables" !IMPORTANT! en allant de haut vers le bas !IMPORTANT!

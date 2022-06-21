@@ -1,0 +1,46 @@
+Client :										Restorateur :	                           Livreur:											
+	Id  										Id                                         Id
+	Mail 										Mail                                       Mail
+	mailStatus									mailStatus                                 mailStatus
+	Mdp											Mdp                                        Mdp
+	name 										name                                       name
+	Phone                                       Phone                                      Phone
+	CreditCard                                  Fk >article                                ParainStatus
+	ParainStatus                                Fk > Menu                                  ParainName
+	ParainName                                  Fk > Commande                              FilleulStatus             
+	FilleulStatus                               Fk > Livraison                             FilleulName
+	FilleulName                                 ParainStatus                               Fk > Livraison
+	Fk > Commande								ParainName                                 Fk > ConnectionLogs
+    Fk > Livraison                              FilleulStatus
+    Fk > ConnectionLogs						    FilleulName
+    											
+
+Developeur Tiers :                             Service Market :                            Service Tech :                     
+
+	Id  									   Id 	                                       Id                                  
+	Mail 									   Mail                                        Mail
+	mailStatus							       mailStatus 		                           mailStatus      
+	Mdp										   Mdp	                                       Mdp 
+	name 									   name	                                       name
+	Phone                                      Phone                                       Phone
+	Fk > ConnectionLogs                        Fk > Client                                 Fk > ConnectionLogs
+	                                           Fk > Commande                               
+	                                           Fk > Livraison                              
+	                                           Fk > ConnectionLogs
+
+
+Commande :             Article : 			Menu: 			               Livraison :                  ConnectionLogs :               
+	Id                 Id                   Id                             Id							Id 		
+	Ncommand           Name 				Fk > Article            	   Status(Accepter, refuser, 
+																		en cours , terminer)	        LoginTime(datetime)  
+	DateTime           Picture              Price                          Fk > Client                  LogOutTime(datetime) 
+ 	Total              Price                Picture                        Fk > Commande                Fk > (all users)
+	Fk > article                                                           Fk > Livreur
+	Payement
+	Fk > Livreur 
+	Fk > Menu
+	Fk > Livraison
+
+	Download Logs :                                              Stats :                     Composants :
+	Id                                                           Id                          Id  
+	?	                                                                                      ?

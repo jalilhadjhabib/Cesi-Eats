@@ -158,6 +158,7 @@ export default {
       ArticleService.delete(id)
         .then(response => {
           console.log(response.data);
+          this.$router.go();
         })
         .catch(e => {
           console.log(e);

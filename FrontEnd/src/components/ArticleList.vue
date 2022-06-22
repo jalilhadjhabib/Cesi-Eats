@@ -75,7 +75,8 @@
     <img class="img-fluid" style="width:150px;height:150px;" :src="'http://127.0.0.1:4000\\'+Article.picture.path" alt="Card image cap">
 </div>
 <div>
-<button @click="AddToCart(Article._id)" class="btn btn-md mx-1 btn-success" >Ajouter au panier</button>
+  
+<button  @click="AddToCart(Article._id)"  class="btn btn-md mx-1 btn-success" >Ajouter au panier</button>
 </div>
 </p>
 
@@ -151,8 +152,18 @@
           </div>
         </footer>
         </div>
-  </div> 
-  
+  <!-- popup for added to cart -->
+  <div class="modal fade" id="addToCartEffect" tabindex="-1"  aria-hidden="true">
+    <div class="modal-dialog">
+        
+        <i class="bi h1 text-success bi-bag-check-fill"></i>
+          
+    </div>
+  </div>
+
+    </div> 
+
+
 </template>
 <style>
 @import '../assets/css/Navbar.css';
@@ -173,7 +184,9 @@ import ArticleService from "../services/ArticleService";
 import CartService from "../services/CartService";
 
 var cart = [];
-
+ 
+import JQuery from 'jquery'
+window.$ = JQuery
 
 export default {
   name: "Articles-list",
@@ -203,14 +216,13 @@ export default {
       cart.push(id);
       if (cartCookie == null) { 
         cartCookie = CartService.setCookie('testuser',cart,7);
-        console.log(cartCookie);
       }
       else {
         cart.push(cartCookie[0]);
         cartCookie = CartService.setCookie('testuser',cart,7);
-        console.log(cartCookie);
       }
-
+      $('#addToCartEffect').modal('toggle');
+      setTimeout(function() {$('#addToCartEffect').modal('hide');}, 500);
     }
     
   },

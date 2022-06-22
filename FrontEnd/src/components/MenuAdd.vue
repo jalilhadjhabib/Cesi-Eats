@@ -143,6 +143,29 @@
   </div> 
   
 
+  
+  <!-- POP UP FOR SUCCESS -->
+  <div class="modal fade" id="popupsuccess" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title d-flex justify-text-between" id="exampleModalLabel">Menu ajouté <i class="bi mx-3 bi-emoji-laughing"></i></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p class="text-center h5 my-3"> Votre Menu a bien été ajouté </p>
+        </div>
+        <div class="modal-footer">
+            <button  class="btn  btn-outline-primary"><i class="bi bi-house"></i></button>
+            <button data-dismiss="modal" class="btn btn-light"><i class="bi bi-x"></i></button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
 
 </div>
 </template>
@@ -172,6 +195,10 @@ export default class MenuAdd extends Vue created(){
 <script>
 import MenuService from "../services/MenuService.js";
 
+import JQuery from 'jquery'
+window.$ = JQuery
+
+
 let data = new FormData();  
 export default {
   name: "MenuAdd",
@@ -197,6 +224,7 @@ export default {
         .then(response => {
           this.menu.id = response.data.id;
           console.log(response.data);
+           $('#popupsuccess').modal('toggle');
           this.submitted = true;
         })
         .catch(e => {

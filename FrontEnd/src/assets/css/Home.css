@@ -7,7 +7,7 @@
 
   .newsletter{
     height: 400px;
-    background: url("@/assets/images/newsletter.png") ;
+    background: url("@/assets/images/newsletter.png")!important;
  }
 .newsletterh1{
   padding-top: 20px;

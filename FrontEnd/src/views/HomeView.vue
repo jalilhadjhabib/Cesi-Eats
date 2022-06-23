@@ -16,22 +16,22 @@
     <center><p style="font-size: 15px;width: 200px;">Vos plats préférés comme au restaurant</p></center>
   </div>
   </div></a>
-  <a href="#" style="text-decoration: none;"><div class="item"><img style ="width:80px" src="@/assets/images/cadi.jpg"/>
+  <a href="/client/displayarticle" style="text-decoration: none;"><div class="item"><img style ="width:80px" src="@/assets/images/cadi.jpg"/>
   <div>
-    <strong><p style="font-size: 20px;">Cesi Eats Market</p></strong>
-    <center><p style="font-size: 15px;width: 200px;">Ouvert tous les jours de 10h à 23h</p></center>
+    <strong><p style="font-size: 20px;">Cesi Eats Articles</p></strong>
+    <center><p style="font-size: 15px;width: 200px;">Découvrez nos articles</p></center>
   </div>
   </div></a>
-  <a href="#" style="text-decoration: none;"><div class="item"><img style ="width:80px" src="@/assets/images/sucrerie.jpg"/>
+  <a href="#" style="text-decoration: none;"><div class="item"><img style ="width:80px" src="@/assets/images/menuhome.png"/>
   <div>
-   <strong><p style="font-size: 20px;">Sucreries et Gâteux</p></strong>
-    <center><p style="font-size: 15px;">Desserts et goûters</p></center>
+   <strong><p style="font-size: 20px;padding-top:10px;">Nos Menus</p></strong>
+    <center><p style="font-size: 15px;width: 200px;">Découvrez des menus préparé pour vous</p></center>
   </div>
   </div></a>
   
 </div>
 </div>
-<Articlelist/>
+
 
 <div class="newsletter">
 <center><strong><h1 class="newsletterh1">Abonnez vous à notre newsletter pour ne rien rater !</h1></strong></center>
@@ -61,18 +61,17 @@
   
 </template>
 <style>
-  @import '../assets/css/Navbar.css';
-  @import '../assets/css/Header.css';
-  @import '../assets/css/Home.css';
-  @import '../assets/css/Responsive.css';
+  @import '@/assets/css/Navbar.css';
+  @import '@/assets/css/Header.css';
+  @import '@/assets/css/Home.css';
+  @import '@/assets/css/Responsive.css';
 
 </style>
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import NavBar from '@/components/NavBar.vue';
-import Header from '@/components/Header.vue';
-import Footer from '@/components/Footer.vue';
-import Articlelist from '../components/ArticleList.vue';
+import NavBar from '@/components/HomeComponents/NavBar.vue';
+import Header from '@/components/HomeComponents/Header.vue';
+import Footer from '@/components/HomeComponents/Footer.vue';
 
 
 
@@ -81,9 +80,10 @@ import Articlelist from '../components/ArticleList.vue';
     NavBar,
     Header,
     Footer,
-    Articlelist
+    
   },
 })
+
 export default class HomeView extends Vue {
     created(){
         document.title = "Accueil"

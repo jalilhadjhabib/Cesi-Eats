@@ -33,7 +33,7 @@ nav a.router-link-exact-active {
 }
 
 body{
-  background: url(https://www.allorecettes.com/wp-content/uploads/2021/05/Sans-titre-73.jpg) top/contain no-repeat;
+  background: url(https://www.allorecettes.com/wp-content/uploads/2021/05/Sans-titre-73.jpg)top/contain no-repeat !important; 
   margin: 0;
   padding: 0;
   width: 100%;

@@ -71,8 +71,27 @@ router.delete('/delete/:id', function(req, res, next) {
 router.put('/put/:id', function(req, res, next) {
 
     const id =  req.params.id ;
-    const update = { name : nameArticle ,picture : pictureArticle ,price : priceArticle , id_menu : id_menuArticle   };
+    console.log(typeof(req.files));
+    var pictureArticle = {};
+    if( 
+        Object.keys(req.files).length !== 0  
+    ){ 
+          pictureArticle = {
+            path:  req.files.picture.path,
+            contentType: 'image/png'
+        } ;
+    }else{
+          pictureArticle = {};
 
+    }
+    const nameArticle  = req.fields.name ;
+    const priceArticle = req.fields.price ;
+    const id_menuArticle = req.fields.id_menu;
+    console.log(pictureArticle);
+    const update = { name : nameArticle ,picture : pictureArticle ,price : priceArticle , id_menu : id_menuArticle   } ;
+    if(Object.keys(pictureArticle).length === 0 ){
+        delete update.picture ;
+    }
     articleModel.findByIdAndUpdate(id, update)
       .then(articleModel => res.status(202).json(articleModel))
       .catch(error => res.status(400).json({ error }));

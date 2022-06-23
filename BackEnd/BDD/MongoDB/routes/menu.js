@@ -63,16 +63,36 @@ router.delete('/delete/:id', function(req, res, next) {
      .catch(error => res.status(400).json({ error }));
 });
 
+
 // update by id to collection
 router.put('/put/:id', function(req, res, next) {
 
     const id =  req.params.id ;
-    const update = { name: req.body.name , picture :req.body.picture ,price:req.body.price,id_restaurant: req.body.id_restaurant};
+    console.log(typeof(req.files));
+    var pictureMenu = {};
+    if( 
+        Object.keys(req.files).length !== 0  
+    ){ 
+          pictureMenu = {
+            path:  req.files.picture.path,
+            contentType: 'image/png'
+        } ;
+    }else{
+          pictureMenu = {};
 
+    }
+    const nameMenu  = req.fields.name ;
+    const priceMenu = req.fields.price ;
+    console.log(pictureMenu);
+    const update = { name : nameMenu ,picture : pictureMenu ,price : priceMenu    } ;
+    if(Object.keys(pictureMenu).length === 0 ){
+        delete update.picture ;
+    }
     menuModel.findByIdAndUpdate(id, update)
-      .then(menuModel => res.status(202).json(menuModel))
-      .catch(error => res.status(400).json({ error }));
+    .then(menuModel => res.status(202).json(menuModel))
+    .catch(error => res.status(400).json({ error }));
 });
+
   
  
 

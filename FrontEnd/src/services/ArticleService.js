@@ -15,5 +15,8 @@ class ArticleService {
   get(id){
     return http.get(`/article/get/${id}`);
   }
+  put(id,data){
+    return http.put(`/article/put/${id}`,data);
+  }
 }
 export default new ArticleService();

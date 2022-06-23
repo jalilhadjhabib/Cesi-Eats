@@ -31,7 +31,7 @@
   
 </div>
 </div>
-
+<Articlelist/>
 
 <div class="newsletter">
 <center><strong><h1 class="newsletterh1">Abonnez vous à notre newsletter pour ne rien rater !</h1></strong></center>
@@ -72,13 +72,16 @@ import { Component, Vue } from 'vue-property-decorator';
 import NavBar from '@/components/NavBar.vue';
 import Header from '@/components/Header.vue';
 import Footer from '@/components/Footer.vue';
+import Articlelist from '../components/ArticleList.vue';
+
 
 
 @Component({
   components: {
     NavBar,
     Header,
-    Footer
+    Footer,
+    Articlelist
   },
 })
 export default class HomeView extends Vue {

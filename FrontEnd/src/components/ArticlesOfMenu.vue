@@ -50,7 +50,7 @@
 </div>
 <div>
 <button @click="DropArticle(Article._id)"  class="btn btn-md mx-1 btn-danger" >Supprimer l'article</button>
-        <button class="btn btn-md mx-1 btn-warning">Editer l'article</button>
+        <router-link :to="{path : '/restaurateur/editarticle', query : {id_article :Article._id}}" class="btn btn-md mx-1 btn-warning">Editer l'article</router-link>
 </div>
 </p>
 

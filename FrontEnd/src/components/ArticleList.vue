@@ -187,9 +187,12 @@ var cart = [];
  
 import JQuery from 'jquery'
 window.$ = JQuery
+// import { Component, Prop, Vue } from 'vue-property-decorator';
 
+// @Component
+// export default class ArticleList extends Vue {};
 export default {
-  name: "Articles-list",
+  name: "Articlelist",
   data() {
     return {
       Articles: [],

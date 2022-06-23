@@ -80,7 +80,17 @@ const routes: Array<RouteConfig> = [
     path: "/client/cart",
     name: "displaycart",
     component: () => import("../components/CartList.vue")
-  }   
+  },
+  {
+    path: "/restaurateur/editarticle",
+    name: "ArticleEdit",
+    component: () => import("../components/ArticleEdit.vue")
+  },
+  {
+    path: "/restaurateur/editmenu",
+    name: "MenuEdit",
+    component: () => import("../components/MenuEdit.vue")
+  }
   
 ]
 

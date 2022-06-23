@@ -79,7 +79,7 @@
 </router-link></div>
 <div>
 <button @click="DropMenu(Menu._id)"  class="btn btn-md mx-1 btn-danger" >Supprimer le menu</button>
-        <button class="btn btn-md mx-1 btn-warning">Editer le menu</button>
+ <router-link :to="{path : '/restaurateur/editmenu', query : {id_menu :Menu._id}}" class="btn btn-md mx-1 btn-warning">Editer le menu</router-link>
 </div>
 </p>
 

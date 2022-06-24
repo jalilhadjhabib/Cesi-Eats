@@ -19,13 +19,22 @@
 <strong><h1 style="color:black;font-weight:700;">Restaurateur BackEnd</h1></strong>
 
 <center>
-<div style="background:white;height:200px;width:700px;box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;">
+<div style="background:white;height:700px;width:700px;box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;">
      
     <div class="form-group" style="padding-top:20px;">
         
     </div>
     
-
+    <div class="text-center my-3">
+      <ul>
+        <li>Notification</li>
+        <li 
+        :class="{ active: index == currentIndex }"
+          v-for="(Notification, index) in Notifications"
+          :key="index"
+        >{{Notification.message}}</li>
+      </ul>
+    </div>
 
 
     <div class="text-center my-3">
@@ -44,7 +53,11 @@
         <button class="btn btn-light" style="background-color:black;color:white;width:300px;">Tableau d'édition des articles</button>
         </a>
     </div>
-    
+    <div class="text-center my-3">
+          <router-link  :to="{path : '/restaurateur/displayCommandes', query : {id_restaurateur :'testidrestaurant'}}" >
+        <button class="btn btn-light" style="background-color:black;color:white;width:300px;">Tableau des Commandes</button>
+        </router-link>
+    </div>    
 </div>
 </center>
 </div></div>
@@ -117,7 +130,7 @@
 
 
 </template>
-<script lang="ts">
+<!-- <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import MenusAdd from '@/components/RestaurateurComponents/MenuAdd.vue';
 import MenuList from '@/components/RestaurateurComponents/MenuList.vue';
@@ -133,7 +146,46 @@ export default class Restaurateur extends Vue {
     created(){
         document.title = "Restaurateur"
     }
+
   }
+</script> -->
+<script>
+import NotificationService from "@/services/NotificationService";
+import { Component, Vue } from 'vue-property-decorator';
+import MenusAdd from '@/components/RestaurateurComponents/MenuAdd.vue';
+import MenuList from '@/components/RestaurateurComponents/MenuList.vue';
+
+
+
+export default  {
+  data() {
+    return {
+      Notifications: [],
+      currentTutorial: null,
+      currentIndex: -1,
+      title: ""
+    };
+  },
+  methods: {
+    retrieveNotifications() {
+        NotificationService.getAll()
+        .then(response => {
+            this.Notifications = response.data ;
+            console.log(response.data);
+        })
+        .catch(e => {
+            console.log(e);
+        });
+    }
+  },
+  mounted() {
+    this.retrieveNotifications();
+  },
+  created(){
+        document.title = "Restaurateur"
+    }
+};
+
 </script>
 <style>
 

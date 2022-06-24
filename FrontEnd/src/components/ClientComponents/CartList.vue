@@ -151,7 +151,7 @@
 import ArticleService from "@/services/ArticleService";
 import CartService from "@/services/CartService";
 import OrderService from "@/services/OrderService";
-
+import NotificationService from "@/services/NotificationService";
 import JQuery from 'jquery'
 window.$ = JQuery
 var ids_cart = CartService.getCookie('testuser');
@@ -198,11 +198,25 @@ export default {
         date : Date.now(),
         ids_article : this.order.ids_article,
         price : this.order.total,
+        id_restaurant : 'testidrestaurant',
+        id_client : 'testidclient'
       };
+      var NotificationData = {
+        type_user : "restaurateur",
+        id_restaurant : 'testidrestaurant',
+        message : "une Commande de hamster"
+      }
       OrderService.post(data)
         .then(response => {
           console.log(response.data);
           $('#popupsuccess').modal('toggle');
+            NotificationService.post(NotificationData)
+            .then(response => {
+              
+              console.log(response.data);
+            }).catch(e => {
+            console.log(e);
+            });  
         })
         .catch(e => {
           console.log(e);

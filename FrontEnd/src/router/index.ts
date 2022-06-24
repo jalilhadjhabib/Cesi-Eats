@@ -42,6 +42,12 @@ const routes: Array<RouteConfig> = [
     component: () => import("../views/Restaurateur/Restaurateur.vue")
   },
   {
+    path: "/restaurateur/displayCommandes",
+    alias: "/menu",
+    name: "menu",
+    component: () => import("../components/RestaurateurComponents/CommandeList.vue")
+  },
+  {
     path: "/manager",
     alias: "/manager",
     name: "manager",
@@ -90,6 +96,22 @@ const routes: Array<RouteConfig> = [
     path: "/restaurateur/editmenu",
     name: "MenuEdit",
     component: () => import("../components/RestaurateurComponents/MenuEdit.vue")
+  },
+  {
+    path: '/livreur',
+    name: 'livreur',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import( '../views/Livreur/LivreurView.vue')
+  },
+  {
+    path: '/listcommande',
+    name: 'livreur',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import( '../components/LivreurComponents/CommandeList.vue')
   }
   
 ]

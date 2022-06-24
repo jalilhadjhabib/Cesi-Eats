@@ -9,6 +9,8 @@ var deliveryRouter = require('./routes/delivery');
 var indexRouter = require('./routes/index');
 var menuRouter = require('./routes/menu');
 var orderRouter = require('./routes/order');
+var notificationRouter = require('./routes/notification');
+
 
 
 
@@ -30,6 +32,7 @@ app.use('/api/delivery',deliveryRouter);
 app.use('/', indexRouter);
 app.use('/api/menu', menuRouter);
 app.use('/api/order',orderRouter);
+app.use('/api/notification',notificationRouter);
 
 
 // catch 404 and forward to error handler

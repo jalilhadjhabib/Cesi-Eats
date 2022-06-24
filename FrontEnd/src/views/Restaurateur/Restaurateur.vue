@@ -1,31 +1,6 @@
 <template>
 
-
-
-
-  <div id="app">
-    <nav class="navbar navbar-expand-lg" style="background:black;height:80px;">
-  <a class="navbar-brand" href="/home" style="margin-left:40px;font-size:40px;color:white;font-family:Helvetica"">Cesi</a>
-    <a class="navbar-brand" href="/home" style="font-size:40px;color:#64F58D;font-family:Helvetica">Eats</a>
-
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-</nav>
-
-<div>
-<div style="padding-top:150px;">
-
-<strong><h1 style="color:black;font-weight:700;">Restaurateur BackEnd</h1></strong>
-
-<center>
-<div style="background:white;height:700px;width:700px;box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;">
-     
-    <div class="form-group" style="padding-top:20px;">
-        
-    </div>
-    
-    <div class="text-center my-3">
+  <!--<div class="text-center my-3">
       <ul>
         <li>Notification</li>
         <li 
@@ -34,7 +9,46 @@
           :key="index"
         >{{Notification.message}}</li>
       </ul>
+    </div>-->
+
+
+  <div id="app">
+    <nav class="navbar navbar-expand-lg" style="background:black;height:80px;">
+  <a class="navbar-brand" href="/home" style="margin-left:40px;font-size:40px;color:white;font-family:Helvetica">Cesi</a>
+    <a class="navbar-brand" href="/home" style="font-size:40px;color:#64F58D;font-family:Helvetica">Eats</a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <a class="nav-link waves-effect waves-light" id="navbarDropdownMenuLink-5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+              <i class="fa fa-bell" style="color: white;font-size: 35px;padding-left: 1000px;"></i>
+            </a>
+            <div style="width: 200px;" class="dropdown-menu dropdown-menu-lg-right dropdown-secondary" aria-labelledby="navbarDropdownMenuLink-5">
+              <p>
+        <center><h4>Vos Notification</h4></center>
+        <center><p 
+        :class="{ active: index == currentIndex }"
+          v-for="(Notification, index) in Notifications"
+          :key="index" style="background-color: #e8dcb9;color:black;text-align:center;width:150px;font-weight: 700;box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;padding: 10px;"
+        >{{Notification.message}}</p></center>
+      </p>
+            </div>
+</nav>
+
+<div>
+<div style="padding-top:150px;">
+
+<strong><h1 style="color:black;font-weight:700;">Restaurateur BackEnd</h1></strong>
+
+<center>
+<div style="background:white;height:400px;width:700px;box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;">
+     
+    <div class="form-group" style="padding-top:20px;">
+        
     </div>
+    
+  
 
 
     <div class="text-center my-3">

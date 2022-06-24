@@ -1,6 +1,7 @@
 <template>
-    <div class="bg-white">
-        <div class="container mt-2 bg-white">
+    <div style="padding-top: 150px;">
+    <h1 style="font-weight: 700;color:black;box-shadow: rgba(0, 0, 0.70, 0.35) 0px 5px 15px;">Commandes des clients</h1>
+        <div class="container mt-2" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">
             <table class="table bg-light">
                 <thead>
                     <tr>
@@ -133,3 +134,6 @@ export default {
   }
 };
 </script>
+<style>
+  @import '@/assets/css/Restaurateur.css';
+</style>

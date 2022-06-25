@@ -18,7 +18,7 @@
         <div class="card" style="background:#fef9ef;box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">
           <div class="card-body p-5 text-center" >
         <form style="font-weight: 700; padding-top: 20px;">
-            <h3>Connexion</h3>
+            <h3>Mot de passe oublié</h3>
             
  
             <div class="form-group">
@@ -26,22 +26,11 @@
                 <input required placeholder="Adresse e-mail" type="email"  />
             </div>
  
-            <div class="form-group">
-                <label></label>
-                <input required placeholder="Mot de passe" id="typepass" type="password"
-                 />
-                <i class="bi bi-eye-slash" style="" id="togglePassword" @click="Toggle()"></i>
-                         
-            </div>
+            
  
-            <button type="submit" class="btn btn-dark btn-lg btn-block">Connecter</button>
-
-             
-                <p class="text-center" style="padding-top: 20px;"><router-link  to="/register">S'inscrire</router-link></p>
-            
-            
-                <router-link to="/forgot-password">Mot de passe oublié ?</router-link>
-            
+            <button type="submit" class="btn btn-dark btn-lg btn-block">Mot de passe oublié</button>
+ 
+     
  
             
  

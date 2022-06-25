@@ -56,12 +56,6 @@ const routes: Array<RouteConfig> = [
     component: () => import("../components/RestaurateurComponents/CommandeList.vue")
   },
   {
-    path: "/manager",
-    alias: "/manager",
-    name: "manager",
-    component: () => import("../views/Client/ClientsView.vue")
-  },
-  {
     path: "/restaurateur/displaymenu",
     alias: "/menu",
     name: "menu",
@@ -85,17 +79,6 @@ const routes: Array<RouteConfig> = [
     component: () => import("../components/RestaurateurComponents/ArticlesOfMenu.vue")
   },
   {
-    path: "/client/displayarticle",
-    name: "article",
-    //params: true,
-    component: () => import("../components/ClientComponents/ArticleList.vue")
-  },
-  {
-    path: "/client/cart",
-    name: "displaycart",
-    component: () => import("../components/ClientComponents/CartList.vue")
-  },
-  {
     path: "/restaurateur/editarticle",
     name: "ArticleEdit",
     component: () => import("../components/RestaurateurComponents/ArticleEdit.vue")
@@ -114,13 +97,35 @@ const routes: Array<RouteConfig> = [
     component: () => import( '../views/Livreur/LivreurView.vue')
   },
   {
-    path: '/listcommande',
+    path: '/livreur/listcommande',
     name: 'livreur',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import( '../components/LivreurComponents/CommandeList.vue')
-  }
+  },
+  {
+    path: "/client",
+    name: "client",
+    component: () => import("../views/Client/Client.vue")
+  },
+  {
+    path: "/client/displayarticle",
+    name: "article",
+    //params: true,
+    component: () => import("../components/ClientComponents/ArticleList.vue")
+  },
+  {
+    path: "/client/cart",
+    name: "displaycart",
+    component: () => import("../components/ClientComponents/CartList.vue")
+  },
+  {
+    path: "/manager",
+    alias: "/manager",
+    name: "manager",
+    component: () => import("../views/Manager/Manager.vue")
+  },
   
 ]
 

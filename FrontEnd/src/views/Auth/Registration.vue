@@ -148,9 +148,13 @@ export default {
             var temp = document.getElementById("typepass");
             if (temp.type === "password") {
                 temp.type = "text";
+                document.getElementById("togglePassword").className = "bi bi-eye-slash";
+
             }
             else {
                 temp.type = "password";
+                document.getElementById("togglePassword").className = "bi bi-eye";
+
             }
         }
     },

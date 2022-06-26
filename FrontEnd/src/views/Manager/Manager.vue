@@ -1,43 +1,64 @@
 <template name="clients">
 
-  <div class="clients">
-    <div>
-        <Navbar />
-    </div>
-    <div>
- 
+  
+ <div>
+<nav class="navbar navbar-expand-lg" style="background:black;height:80px;">
+  <a class="navbar-brand" href="/home" style="margin-left:40px;font-size:40px;color:white;font-family:Helvetica">Cesi</a>
+    <a class="navbar-brand" href="/home" style="font-size:40px;color:#64F58D;font-family:Helvetica">Eats</a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <a class="nav-link waves-effect waves-light ml-auto" id="navbarDropdownMenuLink-5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+              <i class="fa fa-bell" style="color: white;font-size: 35px;"></i>
+            </a>
+            <div style="width: 200px;" class="dropdown-menu dropdown-menu-lg-right dropdown-secondary" aria-labelledby="navbarDropdownMenuLink-5">
+              <p>
+        <center><h4>Vos Notification</h4></center>
+        <center><p 
+        style="background-color: #e8dcb9;color:black;text-align:center;width:150px;font-weight: 700;box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;padding: 10px;"
+        >3amar hna</p></center>
+      </p>
+            </div>
+</nav>
+<div style="padding-top:150px;">
+
+<strong><h1 style="color:black;font-weight:700;">Manager BackEnd</h1></strong>
+<center><div style="padding-top:20px;width:400px;height: 200px;background-color: white;box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;">
 
 
-<table class="table table-striped">
-<thead>
-    <tr>
-        <th>
-             <b-button b-button v-b-modal.modal-1
+
+    <input class="form-control m-1" style="width: auto;"
+            v-model="ClientIDFilter"
+            v-on:keyup="FilterFn()"
+            placeholder="Filter by Id">
+                <input class="form-control m-2" style="width: auto;"
+        v-model="ClientNameFilter"
+        v-on:keyup="FilterFn()"
+        placeholder="Filter by Name">
+<b-button b-button v-b-modal.modal-1
         class="btn btn-info m-2 fload-end" 
         data-toggle="modal"
         data-target="#exampleModal"
         @click="addClick()">
         Add Client
     </b-button>
-            <div class ="mb-4 row" style="width: 100%;">
-            <input class="form-control m-2" style="width: auto;"
-            v-model="ClientIDFilter"
-            v-on:keyup="FilterFn()"
-            placeholder="Filter by Id">
-                
-            </div>
-            ClientId
-        </th>
-        <th>
-        <div class ="mb-4 row" style="width: 100%;">
 
-        <input class="form-control m-2" style="width: auto;"
-        v-model="ClientNameFilter"
-        v-on:keyup="FilterFn()"
-        placeholder="Filter by Name">
-        
-       
-        </div>
+</div></center>
+
+
+
+
+
+
+
+<div style="overflow-x:auto;margin:40px;">
+<table class="table bg-light" style="box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;">
+    <tr>
+      <th>
+            ClientID
+        </th><th>
             Name
         </th>
         <th>
@@ -71,9 +92,6 @@
             Options
         </th>
     </tr>
-</thead>
-<tbody>
-
     <tr v-for="c in client_list">
     <td>{{c.ClientID}}</td>
     <td>{{c.Name}}</td> 
@@ -104,14 +122,30 @@
            
     </td>      
     </tr>
-</tbody>
-</table>
-
-
-
-
-
+  
+    
+  </table>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <div id="modal_div">
 
@@ -157,11 +191,70 @@
   </b-modal>
 </div>
         
-       
-</div>
-</div>
-</div>
-</div>
+       </div>
+
+<div style="padding-top:50px;">
+<div><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></div>
+
+
+<footer data-aos="fade-up" class="text-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 col-lg- col-xl-3">
+          <strong><h5>
+            À propos
+          </h5></strong>
+          <hr class="bg-white mb-2 mt-0 d-inline-block mx-auto w-25">
+          <p class="mb-0">
+            Cesi Eats est un service de livraison de plats cuisinés lancé par 
+            A4 Oran en 2022 et basé à Oran, en Algérie. Les commandes 
+            sont prises via le site web de Cesi Eats auprès 
+            des restaurants partenaires et sont livrées par des coursiers indépendants.
+          </p>
+        </div>
+        <div class="col-md-4 col-lg-3 col-xl-3">
+          <strong><h5>
+            Contact
+          </h5></strong>
+          <hr class="bg-white mb-2 mt-0 d-inline-block mx-auto w-25">
+          <ul class="list">
+            <li><i class="fa fa-envelope mr-2"></i> contact@cesieats.dz</li>
+            <li><i class="fa fa-phone mr-2"></i> (+213) 077 77 77 77</li>
+            <li><i class="fa fa-phone mr-2"></i> (+213) 077 77 77 77</li>
+            <li><i class="fa fa-phone mr-2"></i> (+213) 077 77 77 77</li>
+          </ul>
+        </div>
+        <div class="col-md-2 col-lg-2 col-xl-3 mx-auto">
+           <strong><h5>
+            Retrouvez-nous sur :
+          </h5></strong>
+          <hr class="bg-white mb-2 mt-0 d-inline-block mx-auto w-25">
+          <ul class="list-unstyled">
+            <li>
+              <a href="#" class="fb btn" target="_blank" style="background-color: lightgray;color: white;"><i class="fa fa-facebook fa-fw fa-2x" style="" ></i></a>
+            </li>
+            <li>
+              <br>
+            <a href="#" class="twitter btn" target="_blank" style="background-color: lightgray;color: white;"><i class="fa fa-twitter fa-fw fa-2x"></i></a>
+            </li>
+            <li>
+              <br>
+            <a href="#" class="twitter btn" target="_blank" style="background-color: lightgray;color: white;"><i class="fa fa-instagram fa-fw fa-2x"></i></a>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="col">
+          <center>
+            <strong><p>Copyright © 2022. All rights reserved to Cesi Oran A4.</p></strong>
+          </center>
+          </div>
+          </div>
+          </div>
+        </footer>
+        </div>
+
+
 </div>
 </template>
 
@@ -186,12 +279,26 @@ export default {
         Phone:"",
         ClientNameFilter:"",
         ClientIDFilter:"",
-        clientsWithoutFilter:[]
+        clientsWithoutFilter:[],
+        Notifications: [],
+      currentTutorial: null,
+      currentIndex: -1,
+      title: "",
 
     }
 
 },
 methods:{
+    retrieveNotifications() {
+        NotificationService.getAll()
+        .then(response => {
+            this.Notifications = response.data ;
+            console.log(response.data);
+        })
+        .catch(e => {
+            console.log(e);
+        });
+    },
     refreshData(){
         axios.get(sqlApi.API_URL+"clients")
         .then((response)=>{
@@ -308,8 +415,14 @@ methods:{
 },
 mounted:function(){
     this.refreshData();
-    
-}
+    this.retrieveNotifications();
+},
+created(){
+        document.title = "Manager"
+    }
 }
 </script>
 
+<style>
+  @import '@/assets/css/Manager.css';
+</style>

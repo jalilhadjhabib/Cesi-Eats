@@ -21,21 +21,19 @@
             <h3>Connexion</h3>
             
  
-            <div class="form-group">
-                <label style></label>
-                <input required placeholder="Adresse e-mail" type="email"  />
+           <div class="form-group">
+                <label for="email">Email:</label>
+                <input v-model="user.email" ref="email" type="text" class="form-control" placeholder="" name="email"/>               
             </div>
  
             <div class="form-group">
-                <label></label>
-                <input required placeholder="Mot de passe" id="typepass" type="password"
-                 />
-                <i class="bi bi-eye-slash" style="" id="togglePassword" @click="Toggle()"></i>
-                         
+                <label for="pwd">Mot de pass:</label>
+                <input v-model="user.password" ref="psw" type="password" class="form-control" placeholder="" name="pwd" id="typepass"/>
+                  <i class="bi bi-eye-slash" style="" id="togglePassword" @click="Toggle()"></i>
             </div>
- 
-            <button type="submit" class="btn btn-dark btn-lg btn-block">Connecter</button>
-
+             <div class="clearfix">
+            <button type="button" class="btn btn-dark btn-lg btn-block" v-on:click="login">Connecter</button>
+            </div>
              
                 <p class="text-center" style="padding-top: 20px;"><router-link  to="/register">S'inscrire</router-link></p>
             
@@ -122,21 +120,66 @@
 
 <script>
 const axios = require('axios');
-import sqlApi from '@/services/sqlApi.js'
+
 
 export default {
-  // Properties returned from data() becomes reactive state
-  // and will be exposed on `this`.
- data(){
 
-    return{
-         Mail:"",
-         Password: ""
+    data(){
+
+        return{
+            user:{ 
+                email:"",
+                password:""
+            }
+        }
+    },
+
+ computed: {
+    buttonLabel() {
+      return (this.showPassword) ? "Hide" : "Show";
     }
- },
+  },
+    methods:{
+        toggleShow() {
+      this.showPassword = !this.showPassword;
+    },
+        signup(){
+            this.$router.push({ name: 'register'});
+        },
 
-methods:{
-    Toggle() {
+        login(){
+            if(this.checkValidation()){
+                axios.get(this.$hostname +"/api/user/signin/"+this.user.email+"/"+this.user.password)
+                .then(response=>{
+                    if(response.data.userId > 0){
+                        console.log(response.data.token);
+                        localStorage.setItem('token', JSON.stringify(response.data.token));
+                        response.data.token = "";
+                        localStorage.setItem('user', JSON.stringify(response.data));
+                        this.$router.push({name:"home"});
+                    }
+                })
+                .catch(error => {
+                    if(error.response) {
+                        alert(error.response.data);
+                    }
+                })
+            }
+        },
+        checkValidation(){
+            if(!this.user.email){
+                this.$refs.email.focus();
+                alert("Enter votre email");
+                return;
+            }
+            if(!this.user.password){
+                this.$refs.psw.focus();
+                alert("Enter votre mot de passe");
+                return;
+            }
+            return true;
+        },
+        Toggle() {
             var temp = document.getElementById("typepass");
             if (temp.type === "password") {
                 temp.type = "text";
@@ -149,10 +192,8 @@ methods:{
 
             }
         }
-},
-
-
- }
+    }
+}
 </script>
 <style>
   @import '@/assets/css/Login.css';

@@ -23,36 +23,42 @@
  
             <div class="form-group" style="padding-top: 20px;">
 
-                <input required placeholder="Nom et prénom" type="text" name="name"  />
+                <input v-model="user.username" ref="username" type="text" placeholder="Nom & Prénom" name="username" />
             </div>
             <div class="form-group">
-                <label></label>
-                <input required placeholder="Adresse e-mail" type="email" name="mail"  />
+  
+                <input v-model="user.email" ref="email" type="email" placeholder="Address Email" name="email" />
             </div>
             <div class="form-group">
-                <label></label>
-                <input required placeholder="Mot de passe" id="typepass" type="password"
-                 />
+
+                <input ref="psw" type="password" placeholder="Mot de pass" id="typepass" name="psw"  v-model="user.password"/>
                 <i class="bi bi-eye-slash" style="" id="togglePassword" @click="Toggle()"></i>
                        
             </div>
             <div class="form-group">
-                <label></label>
+
+                <input ref="psw-repeat" type="password" placeholder="Confirmer le mot de pass" id="typepass2" name="psw-repeat"  v-model="user.repeatPassword"/>
+             
+                       
+            </div>
+             
+            <div class="form-group">
+   
                 <input required placeholder="Numéro de téléphone" type="text" name="phone"  />
             </div>
             <div class="form-group">
-                <label></label>
+         
                 <input required placeholder="Carte de crédit" type="numeric" name="creditCard"  />
             </div>
             <div class="form-group">
-                <label></label>
+               
                 <input required placeholder="Adresse" type="text" name="address"  />
             </div>
 
  
             
  
-            <button type="submit" class="btn btn-dark btn-lg btn-block">S'inscrire</button>
+            <button type="button" class="btn btn-dark btn-lg btn-block" v-on:click="signup">S'inscrire</button>
  
             <p class="text-center" style="padding-top: 20px;"><router-link  to="/login">Vous possédez deja un compte ? Se Connecter</router-link></p>
 
@@ -133,34 +139,91 @@
 const axios = require('axios');
 import sqlApi from '@/services/sqlApi.js'
 
-export default {
+export default ({
   // Properties returned from data() becomes reactive state
   // and will be exposed on `this`.
  data(){
 
     return{
-         Mail:"",
-         Password: ""
+       
+        user:{ 
+         userId:0,
+         username:"",
+         email: "",
+         password:"",
+         repeatPassword:""
+         },
     }
  },
-    methods:{
+
+ methods : {    
+        back(){
+            this.$router.push({ name : 'home'});
+        },        
+        checkValidation(){
+            if(!this.user.username){
+                alert("Veuillez entrer votre nom !");
+                return;
+            }
+               if(!this.user.email){                    
+                alert("Veuillez entrer votre adresse mail !");
+                return;
+            }
+             if(!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.user.email)){
+                alert("Veuillez enter une Adress mail valide !");
+                return;
+            }
+              if(!this.user.password){                    
+                alert("Password required!");
+                return;
+            }
+              if(this.user.password != this.user.repeatPassword){                    
+                alert("Les mots de passes ne correspondent pas  !");
+                return;
+            }
+            return true;
+
+        },
+        signup(){
+            if(this.checkValidation()){
+                axios.post(this.$hostname +"/api/user/registration", this.user)
+                    .then(response => {
+                        if (response.data.userId > 0){
+                            alert("Vous êtes maintenant inscrit(e)!")
+                            .then(() => {
+                                this.back();
+                            });
+                        }else{
+                            alert("Error : Something went wrong.");
+                        }
+                    })
+                    .catch(error=>{
+                        if (error.response){
+                            alert(error.response.data);
+                        }
+                    });
+            }
+
+        },
         Toggle() {
-            var temp = document.getElementById("typepass");
-            if (temp.type === "password") {
+            var temp = document.getElementById("typepass") ;
+            var temp2 = document.getElementById("typepass2");
+            if (temp.type === "password" && temp2.type === "password") {
                 temp.type = "text";
+                temp2.type = "text";
                 document.getElementById("togglePassword").className = "bi bi-eye-slash";
 
             }
             else {
                 temp.type = "password";
+                temp2.type = "password";
                 document.getElementById("togglePassword").className = "bi bi-eye";
 
             }
-        }
-    },
+        },
 
-
- }
+ },
+ })
 </script>
 <style>
   @import '@/assets/css/Register.css';

@@ -1,0 +1,21 @@
+FIRST GO TO "startup.cs" line 40 and change this line :
+corsBuilder.WithOrigins("http://localhost:8080") => change the localhost port to whatever ur Vue app is using ex :"8082"
+
+SECOND go to appsettings.json >
+
+change this line :  "Issuer": "http://localhost:2140" 
+and put whatever ur ISS Express server is using (c# app) to see this , right click ur project > properties > debug and see what is the
+link to it and put there
+
+
+go to this line "CesiEatsDB": "Server=DJAMZ\\CESIEATS; Database=CE;user id=sa;password=IngeCesiORAN31A4"
+
+And make sure to change the server name as it will change from pc to pc "Server=DJAMZ\\CESIEATS"
+
+
+Now go to Vue js project and change the localhost of the server accordingly in main.ts:
+
+Vue.prototype.$hostname = 'http://localhost:2140' > change this to whatever your ISS express server is set to.
+
+
+

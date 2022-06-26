@@ -25,7 +25,7 @@ Vue.use(BootstrapVue)
 // Optionally install the BootstrapVue icon components plugin
 Vue.use(IconsPlugin)
 Vue.use(VueMeta)
-
+Vue.prototype.$hostname = 'http://localhost:2140'
 new Vue({
   router,
   store,

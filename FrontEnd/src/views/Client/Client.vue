@@ -26,8 +26,8 @@
 
 
 
-  <a class="nav-link waves-effect waves-light" id="navbarDropdownMenuLink-5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-              <i class="fa fa-bell" style="color: white;font-size: 35px;padding-left: 1000px;"></i>
+  <a class="nav-link waves-effect waves-light ml-auto" id="navbarDropdownMenuLink-5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+              <i class="fa fa-bell" style="color: white;font-size: 35px;"></i>
             </a>
             <div style="width: 200px;" class="dropdown-menu dropdown-menu-lg-right dropdown-secondary" aria-labelledby="navbarDropdownMenuLink-5">
               <p>

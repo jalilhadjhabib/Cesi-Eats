@@ -47,6 +47,9 @@
 
 
     </div>
+
+
+    
 <div>
 
 <div style="padding-top:150px;">
@@ -70,7 +73,7 @@
 <tr  :class="{ active: index == currentIndex }"
           v-for="(Menu, index) in Menus"
           :key="index">
-<p style="font-size:30px;"><b>{{Menu.name}}</b> <span class="w3-right w3-tag w3-dark-grey w3-round">{{Menu.price}} DA</span>
+<p style="font-size:30px;background-color: #F4FFFB;color:black;text-align:center;font-weight: 700;box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;"><b>{{Menu.name}}</b> <span class="w3-right w3-tag w3-dark-grey w3-round">{{Menu.price}} DA</span>
 
         <div>
         <router-link class="btn" :to="{path : '/restaurateur/addarticle', query : {id_menu :Menu._id}}"><button class="btnAddArticle">Ajouter un article</button>  

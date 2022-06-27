@@ -31,7 +31,7 @@
             </div>
             <div class="form-group">
 
-                <input ref="psw" type="password" placeholder="Mot de pass" id="typepass" name="psw"  v-model="user.password"/>
+                <input ref="psw" type="password" placeholder="Mot de passe" id="typepass" name="psw"  v-model="user.password"/>
                 <i class="bi bi-eye-slash" style="" id="togglePassword" @click="Toggle()"></i>
                        
             </div>

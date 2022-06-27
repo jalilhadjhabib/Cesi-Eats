@@ -27,7 +27,7 @@
             </div>
  
             <div class="form-group">
-                <label for="pwd">Mot de pass:</label>
+                <label for="pwd">Mot de passe:</label>
                 <input v-model="user.password" ref="psw" type="password" class="form-control" placeholder="" name="pwd" id="typepass"/>
                   <i class="bi bi-eye-slash" style="" id="togglePassword" @click="Toggle()"></i>
             </div>

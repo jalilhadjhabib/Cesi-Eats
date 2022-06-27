@@ -61,6 +61,12 @@ const routes: Array<RouteConfig> = [
     component: () => import("../components/RestaurateurComponents/CommandeList.vue")
   },
   {
+    path: "/restaurateur/displayarticle",
+    alias: "/article",
+    name: "article",
+    component: () => import("../components/RestaurateurComponents/ArticleList.vue")
+  },
+  {
     path: "/restaurateur/displaymenu",
     alias: "/menu",
     name: "menu",

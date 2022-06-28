@@ -152,6 +152,7 @@ import ArticleService from "@/services/ArticleService";
 import CartService from "@/services/CartService";
 import OrderService from "@/services/OrderService";
 import NotificationService from "@/services/NotificationService";
+import { io } from 'socket.io-client';
 import JQuery from 'jquery'
 window.$ = JQuery
 var ids_cart = CartService.getCookie('testuser');
@@ -170,6 +171,7 @@ export default {
         payementMethod : "",
         published: false
       },
+      socket : io('http://localhost:4000', { transports: ['websocket', 'polling', 'flashsocket']}),
       currentTutorial: null,
       currentIndex: -1,
       title: ""
@@ -193,6 +195,13 @@ export default {
     }      
     },
     saveorder(){
+        this.socket.on('connect', connectUser);
+        var sio = this.socket;
+        function connectUser () {  // Called whenever a user signs in
+        var userId = 13 // Retrieve userId
+        if (!userId) return;
+        sio.emit('userConnected',  userId);
+        }
         var data = {
         payementMethod: this.order.payementMethod,
         date : Date.now(),
@@ -203,8 +212,8 @@ export default {
       };
       var NotificationData = {
         type_user : "restaurateur",
-        id_restaurant : 'testidrestaurant',
-        message : "une Commande de hamster"
+        id_user : 10,
+        message : "Vous avez une nouvelle commande"
       }
       OrderService.post(data)
         .then(response => {
@@ -212,8 +221,12 @@ export default {
           $('#popupsuccess').modal('toggle');
             NotificationService.post(NotificationData)
             .then(response => {
-              
               console.log(response.data);
+              sio.emit('sendnotif',{
+                  id_user : NotificationData.id_user,
+                  type_user : NotificationData.type_user,
+                  message : NotificationData.message
+                });
             }).catch(e => {
             console.log(e);
             });  

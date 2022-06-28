@@ -28,7 +28,7 @@
             <div style="width: 200px;" class="dropdown-menu dropdown-menu-lg-right dropdown-secondary" aria-labelledby="navbarDropdownMenuLink-5">
               <p>
         <center><h4>Vos Notification</h4></center>
-        <center><p 
+        <center id="notif"><p 
         :class="{ active: index == currentIndex }"
           v-for="(Notification, index) in Notifications"
           :key="index" style="background-color: #e8dcb9;color:black;text-align:center;width:150px;font-weight: 700;box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;padding: 10px;"
@@ -165,11 +165,13 @@ export default class Restaurateur extends Vue {
   }
 </script> -->
 <script>
-import NotificationService from "@/services/NotificationService";
 import { Component, Vue } from 'vue-property-decorator';
 import MenusAdd from '@/components/RestaurateurComponents/MenuAdd.vue';
 import MenuList from '@/components/RestaurateurComponents/MenuList.vue';
-
+import NotificationService from "@/services/NotificationService";
+import { io } from 'socket.io-client';
+import JQuery from 'jquery'
+window.$ = JQuery
 
 
 export default  {
@@ -178,12 +180,20 @@ export default  {
       Notifications: [],
       currentTutorial: null,
       currentIndex: -1,
-      title: ""
+      title: "",
+      socket : io('http://localhost:4000', { transports: ['websocket', 'polling', 'flashsocket']})
     };
   },
   methods: {
     retrieveNotifications() {
-        NotificationService.getAll()
+      this.socket.on('connect', connectUser);
+      var sio = this.socket;
+      function connectUser () {  // Called whenever a user signs in
+        var userId = 10 // Retrieve userId
+        if (!userId) return;
+        sio.emit('userConnected',  userId);
+      }
+        NotificationService.getbyiduser(10)
         .then(response => {
             this.Notifications = response.data ;
             console.log(response.data);
@@ -191,10 +201,19 @@ export default  {
         .catch(e => {
             console.log(e);
         });
+    },
+    receivenotification (){
+      var sio = this.socket;
+       sio.on('receivenotif',function(data){
+        $( "#notif" ).append( "<p>"+data.message+"</p>" );
+        $(".fa-bell").addClass('text-danger');
+      });
+
     }
   },
   mounted() {
     this.retrieveNotifications();
+    this.receivenotification();
   },
   created(){
         document.title = "Restaurateur"

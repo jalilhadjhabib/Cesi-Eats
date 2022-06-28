@@ -129,7 +129,7 @@
 
 
 
-
+<CommandeList></CommandeList>
 
 
 
@@ -261,7 +261,13 @@
 <script>
 const axios = require('axios');
 import sqlApi from '@/services/sqlApi.js'
+import CommandeList from '@/components/ManagerComponents/CommandeList';
 
+
+import NotificationService from "@/services/NotificationService.js";
+import { io } from 'socket.io-client';
+import JQuery from 'jquery';
+window.$ = JQuery
 export default {
   // Properties returned from data() becomes reactive state
   // and will be exposed on `this`.
@@ -288,6 +294,9 @@ export default {
     }
 
 },
+components: {
+    CommandeList
+  },
 methods:{
     retrieveNotifications() {
         NotificationService.getAll()

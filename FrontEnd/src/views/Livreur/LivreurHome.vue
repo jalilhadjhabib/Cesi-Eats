@@ -15,10 +15,11 @@
             <div style="width: 200px;" class="dropdown-menu dropdown-menu-lg-right dropdown-secondary" aria-labelledby="navbarDropdownMenuLink-5">
               <p>
         <center><h4>Vos Notification</h4></center>
-        <center><p 
-        
-        style="background-color: #e8dcb9;color:black;text-align:center;width:150px;font-weight: 700;box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;padding: 10px;"
-        >3amar ici</p></center>
+        <center id="notif"><p 
+        :class="{ active: index == currentIndex }"
+          v-for="(Notification, index) in Notifications"
+          :key="index" style="background-color: #e8dcb9;color:black;text-align:center;width:150px;font-weight: 700;box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;padding: 10px;"
+        >{{Notification.message}}</p></center>
       </p>
             </div>
 
@@ -97,7 +98,67 @@
 
 
 
-<script lang="ts">
+
+<script >
+import CommandeList from '@/components/LivreurComponents/CommandeList';
+
+
+import NotificationService from "@/services/NotificationService.js";
+import { io } from 'socket.io-client';
+import JQuery from 'jquery';
+window.$ = JQuery
+
+
+export default  {
+  data() {
+    return {
+      Notifications: [],
+      currentTutorial: null,
+      currentIndex: -1,
+      title: "",
+      socket : io('http://localhost:4000', { transports: ['websocket', 'polling', 'flashsocket']})
+    };
+    },
+    components: {
+    CommandeList
+  },
+    methods : {
+    retrieveNotifications() {
+      this.socket.on('connect', connectUser);
+      var sio = this.socket;
+      function connectUser () {  // Called whenever a user signs in
+        var userId = 20 // Retrieve userId
+        if (!userId) return;
+        sio.emit('userConnected',  userId);
+      }
+        NotificationService.getbyiduser(20)
+        .then(response => {
+            this.Notifications = response.data ;
+            console.log(response.data);
+        })
+        .catch(e => {
+            console.log(e);
+        });
+    },
+    receivenotification (){
+      var sio = this.socket;
+       sio.on('receivenotif',function(data){
+        $( "#notif" ).append( "<p>"+data.message+"</p>" );
+        $(".fa-bell").addClass('text-danger');
+      });
+
+    }
+  },
+  mounted() {
+    this.retrieveNotifications();
+    this.receivenotification();
+  },
+      created(){
+          document.title = "Livreur | CesiEats"
+      },
+  }
+</script>
+<!-- <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import CommandeList from '@/components/LivreurComponents/CommandeList.vue';
 
@@ -114,7 +175,7 @@ export default class LivreurView extends Vue {
         document.title = "Livreur | CesiEats"
     }
   }
-</script>
+</script> -->
 <style>
   @import '@/assets/css/Livreur.css';
 </style>

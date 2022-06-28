@@ -66,9 +66,9 @@
 </template>
 <script>
 import OrderService from "@/services/OrderService";
-
-// import JQuery from 'jquery'
-// window.$ = JQuery
+import { io } from 'socket.io-client';
+import JQuery from 'jquery'
+window.$ = JQuery
 
 export default {
   name: "Commande-list",
@@ -77,7 +77,8 @@ export default {
       Orders: [],
       currentTutorial: null,
       currentIndex: -1,
-      title: ""
+      title: "",
+       socket : io('http://localhost:4000', { transports: ['websocket', 'polling', 'flashsocket']}),
     };
   },
   methods: {
@@ -102,6 +103,13 @@ export default {
         });
     },
   AcceptOrder(id){
+    this.socket.on('connect', connectUser);
+        var sio = this.socket;
+        function connectUser () {  // Called whenever a user signs in
+        var userId = 20 // Retrieve userId
+        if (!userId) return;
+        sio.emit('userConnected',  userId);
+      }
     var data = {
         state : 1,
         id_livreur : 'testidlivreur'
@@ -109,20 +117,34 @@ export default {
     OrderService.updateStateLivreurOrder(id,data)
     .then(response => {
             console.log(response.data);
-            this.$router.go();
+            sio.emit('realtimemanagercommande',{
+                statut_livreur : 1,
+              });
+            // this.$router.go();
         })
         .catch(e => {
           console.log(e);
         });
   },
   AcquitOrder(id){
+    this.socket.on('connect', connectUser);
+        var sio = this.socket;
+        function connectUser () {  // Called whenever a user signs in
+        var userId = 20 // Retrieve userId
+        if (!userId) return;
+        sio.emit('userConnected',  userId);
+      }
     var data = {
         state : 2,
       };
     OrderService.updateStateLivreurOrder(id,data)
     .then(response => {
             console.log(response.data);
-            this.$router.go();
+            // this.$router.go();
+            sio.emit('realtimemanagercommande',{
+                statut_livreur : 2,
+                id :id 
+              });
         })
         .catch(e => {
           console.log(e);
@@ -131,6 +153,7 @@ export default {
           },
   mounted() {
     this.retrieveOrders();
+
   }
 };
 </script>

@@ -1,11 +1,7 @@
 const express = require('express');
 const cors = require('cors');
-var  bodyParser = require('body-parser');
-var fs = require('fs');
-var path = require('path');
 const app = express();
-var io      = require('socket.io')(http);
-var http    = require('http').Server(app);
+
 
 var articleRouter = require('./routes/article');
 var deliveryRouter = require('./routes/delivery');
@@ -15,7 +11,7 @@ var notificationRouter = require('./routes/notification');
 
 
 var corsOptions = {
-    origin: "http://localhost:8080"
+    origin: "*"
   };
 
 app.use(cors(corsOptions));
@@ -31,22 +27,32 @@ app.use('/api/notification',notificationRouter);
 
 
 app.use('/uploads', express.static('uploads'));
+
 app.get('/', (req, res) => {
+    
     res.json({
         message: 'Behold The Cesi A4 OraN Stack!'
     });
 });
+
+var http    = require('http').Server(app);
+var io      = require('socket.io')(http);
 
 const port = process.env.PORT || 4000;
 http.listen(port, () => {
     console.log(`listening on ${port}`);
 });
 
-io.on('connection',function(socket){
-    console.log('We have a user connected !');
-        // This event will be emitted from Client when some one add comments.
-    socket.on('test',function(){
-            console.log('hey')
-        
+io.on('connect', function (socket) {
+    socket.on('userConnected', socket.join);
+    socket.on('userDisconnected', socket.leave);
+    socket.on('sendnotif',function(data){
+        console.log('goood');
+        console.log(data.id_user);
+        io.sockets.to(data.id_user).emit('receivenotif',data);
     });
-});
+    socket.on('realtimemanagercommande',function (data){
+        console.log(data);
+        io.emit('getcommandesatut',data);
+    })
+  });

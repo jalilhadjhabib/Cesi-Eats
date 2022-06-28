@@ -29,7 +29,12 @@ router.get('/getall', function(req, res, next) {
      .catch(error => res.status(400).json({ error }));
 });
 
-
+router.get('/getbyiduser/:iduser', function(req, res, next) {
+    var filtre=req.params.iduser;
+    notificationModel.find( {id_user : { $regex: filtre,$options: 'i' }})
+    .then(notificationModel => res.status(202).json(notificationModel))
+    .catch(error => res.status(400).json({ error }));
+});
 // //get by id from collection
 // router.get('/get/:id', function(req, res, next) {
 //     var id= req.params.id;

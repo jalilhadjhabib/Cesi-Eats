@@ -1,0 +1,9 @@
+<<<<<<< HEAD
+is_global = true
+build_property.RootNamespace = authSql
+build_property.ProjectDir = H:\VSCODE\authSql\authSql\
+=======
+is_global = true
+build_property.RootNamespace = authSql
+build_property.ProjectDir = H:\VSCODE\authSql\authSql\
+>>>>>>> 2950b8467fd53fef76e95c700226553ccfdff12d

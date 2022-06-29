@@ -129,7 +129,10 @@ export default {
         return{
             user:{ 
                 email:"",
-                password:""
+                password:"",
+                connectionStatus:"Connected",
+                user_type:""
+                
             }
         }
     },
@@ -156,9 +159,23 @@ export default {
                         localStorage.setItem('token', JSON.stringify(response.data.token));
                         response.data.token = "";
                         localStorage.setItem('user', JSON.stringify(response.data));
-                        this.$router.push({name:"home"});
+                        if(response.data.user_type === "Client"){
+                             this.$router.push({name:"client"});
+                             alert("Connecter en tant que Client")
+                        }
+                        if(response.data.user_type === "Restorateur"){
+                          this.$router.push({name:"menu"});
+                           alert("Connecter en tant que Restorateur")
+                        }
+                         if(response.data.user_type === "Livreur"){
+                          this.$router.push({name:"livreur"});
+                           alert("Connecter en tant que Livreur")
+                        }
+                       
+                        
                     }
                 })
+               
                 .catch(error => {
                     if(error.response) {
                         alert(error.response.data);
@@ -196,5 +213,5 @@ export default {
 }
 </script>
 <style>
-  @import '@/assets/css/Login.css';
+  @import "@/assets/css/Login.css";
 </style>

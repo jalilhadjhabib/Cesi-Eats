@@ -44,15 +44,15 @@
              
             <div class="form-group">
    
-                <input required placeholder="Numéro de téléphone" type="text" name="phone"  />
+                <input required placeholder="Numéro de téléphone" type="text" name="phone" v-model="user.Phone"/>
             </div>
             <div class="form-group">
          
-                <input required placeholder="Carte de crédit" type="numeric" name="creditCard"  />
+                <input required placeholder="Carte de crédit" type="numeric" name="creditCard" v-model="user.creditCard" />
             </div>
             <div class="form-group">
                
-                <input required placeholder="Adresse" type="text" name="address"  />
+                <input required placeholder="Adresse" type="text" name="address" v-model="user.Address" />
             </div>
 
  
@@ -151,7 +151,11 @@ export default ({
          username:"",
          email: "",
          password:"",
-         repeatPassword:""
+         repeatPassword:"",
+         Phone:"",
+         Address:"",
+         creditCard:"",
+         user_type:"Client"
          },
     }
  },
@@ -191,7 +195,8 @@ export default ({
                         if (response.data.userId > 0){
                             alert("Vous êtes maintenant inscrit(e)!")
                             .then(() => {
-                                this.back();
+                                this.$router.push({name:"login"});
+                                alert("Connecter vous!")
                             });
                         }else{
                             alert("Error : Something went wrong.");
@@ -226,5 +231,5 @@ export default ({
  })
 </script>
 <style>
-  @import '@/assets/css/Register.css';
+  @import "@/assets/css/Register.css";
 </style>

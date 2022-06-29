@@ -61,13 +61,11 @@
         <tfoot>
           
             
-             <div><center><h3 style="font-weight: 700;" for="payment">Méthode de paiement </h3></center></div>
+             <div><h3 style="font-weight: 700;margin-left: 20px;" for="payment">Méthode de paiement </h3></div>
               <div class="select">
-                 <select name="format" id="format" >
-                 <option v-bind="order.payementMethod='Paiement main a main'"
-                  >Paiement Main a main </option>
-                  <option v-bind="order.payementMethod='Paiement En ligne'"
-                  >Paiement En ligne</option>
+                 <select v-model="order.payementMethod">
+                  <option value="Paiement main a main">Paiement main a main</option>
+                  <option value="Paiement en ligne">Paiement en ligne</option>
                 </select>
               </div>
            

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
   "runtimeOptions": {
     "additionalProbingPaths": [
@@ -5,4 +6,13 @@
       "C:\\Users\\tekmo\\.nuget\\packages"
     ]
   }
+=======
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\tekmo\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\tekmo\\.nuget\\packages"
+    ]
+  }
+>>>>>>> 2950b8467fd53fef76e95c700226553ccfdff12d
 }

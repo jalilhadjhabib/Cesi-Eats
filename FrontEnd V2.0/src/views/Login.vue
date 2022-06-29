@@ -45,9 +45,9 @@
               </md-button>
             </login-card>
             <p class="text-center" style="padding-top: 20px;">
-            <router-link id="login" to="/login">Vous avez déjà un compte ? Se Connecter</router-link></p>
+            <router-link id="login" to="/login" style="font-weight: 900;color:lightgray;">Vous avez déjà un compte ? Se Connecter</router-link></p>
             <p class="text-center" style="padding-top: 20px;">
-            <router-link id="login" to="/forget-password">Mot de passe oublié ?</router-link></p>
+            <router-link id="login" to="/forget-password" style="font-weight: 900;color: lightgray;">Mot de passe oublié ?</router-link></p>
           </div>
         </div>
       </div>
@@ -165,16 +165,7 @@ export default {
 
 
 
+<style lang="css">
 
 
-
-
-
-
-
-
-
-
-
-
-<style lang="css"></style>
+</style>

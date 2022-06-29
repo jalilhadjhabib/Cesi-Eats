@@ -43,6 +43,7 @@ export declare class VueRouter {
   go(n: number): void
   back(): void
   forward(): void
+  match (raw: RawLocation, current?: Route, redirectedFrom?: Location): Route
   getMatchedComponents(to?: RawLocation | Route): Component[]
   onReady(cb: Function, errorCb?: ErrorHandler): void
   onError(cb: ErrorHandler): void
@@ -125,7 +126,7 @@ interface _RouteConfigBase {
   children?: RouteConfig[]
   redirect?: RedirectOption
   alias?: string | string[]
-  meta?: any
+  meta?: RouteMeta
   beforeEnter?: NavigationGuard
   caseSensitive?: boolean
   pathToRegexpOptions?: PathToRegexpOptions
@@ -152,7 +153,7 @@ export interface RouteRecord {
   parent?: RouteRecord
   redirect?: RedirectOption
   matchAs?: string
-  meta: any
+  meta: RouteMeta
   beforeEnter?: (
     route: Route,
     redirect: (location: RawLocation) => void,
@@ -204,5 +205,7 @@ export interface Route {
   fullPath: string
   matched: RouteRecord[]
   redirectedFrom?: string
-  meta?: any
+  meta?: RouteMeta
 }
+
+export interface RouteMeta extends Record<string | number | symbol, any> {}

@@ -23,42 +23,42 @@
  
             <div class="form-group" style="padding-top: 20px;">
 
-                <input ref="username" type="text" placeholder="Nom & Prénom" name="username" />
+                <input  v-model="user.userName" ref="userName"  type="text" placeholder="Nom du restaurant" name="userName" />
             </div>
             <div class="form-group">
   
-                <input ref="email" type="email" placeholder="Address Email" name="email" />
+                <input v-model="user.email" ref="email" type="email" placeholder="Address Email" name="email" />
             </div>
             <div class="form-group">
 
-                <input ref="psw" type="password" placeholder="Mot de passe" id="typepass" name="psw" />
+                <input v-model="user.password" ref="psw" type="password" placeholder="Mot de passe" id="typepass" name="psw" />
                 <i class="bi bi-eye-slash" style="" id="togglePassword" @click="Toggle()"></i>
                        
             </div>
             <div class="form-group">
 
-                <input ref="psw-repeat" type="password" placeholder="Confirmer le mot de passe" id="typepass2" name="psw-repeat" />
+                <input v-model="user.repeatPassword" ref="psw-repeat" type="password" placeholder="Confirmer le mot de passe" id="typepass2" name="psw-repeat" />
              
                        
             </div>
              
             <div class="form-group">
    
-                <input required placeholder="Numéro de téléphone" type="text" name="phone"  />
+                <input required placeholder="Numéro de téléphone" type="text" name="phone"  v-model="user.Phone"/>
             </div>
             <div class="form-group">
          
-                <input required placeholder="Carte de crédit" type="numeric" name="creditCard"  />
+                <input required placeholder="Carte de crédit" type="numeric" name="creditCard" v-model="user.creditCard" />
             </div>
             <div class="form-group">
                
-                <input required placeholder="Adresse" type="text" name="address"  />
+                <input required placeholder="Adresse" type="text" name="address" v-model="user.Address" />
             </div>
 
  
             
  
-            <button type="button" class="btn btn-dark btn-lg btn-block" >S'inscrire</button>
+            <button type="button" class="btn btn-dark btn-lg btn-block"  v-on:click="signup">S'inscrire</button>
  
             <p class="text-center" style="padding-top: 20px;"><router-link  to="/login">Vous êtes déjà un restaurateur ? Se Connecter</router-link></p>
 
@@ -142,10 +142,74 @@ import sqlApi from '@/services/sqlApi.js'
 export default ({
   // Properties returned from data() becomes reactive state
   // and will be exposed on `this`.
- 
+ data(){
+
+    return{
+       
+        user:{ 
+         userId:0,
+         userName:"",
+         email: "",
+         password:"",
+         repeatPassword:"",
+         Phone:"",
+         Address:"",
+         creditCard:"",
+         user_type:"Restorateur"
+         },
+    }
+ },
 
  methods : {    
-        
+        back(){
+            this.$router.push({ name : 'home'});
+        },        
+        checkValidation(){
+            if(!this.user.userName){
+                alert("Veuillez entrer votre nom !");
+                return;
+            }
+               if(!this.user.email){                    
+                alert("Veuillez entrer votre adresse mail !");
+                return;
+            }
+             if(!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.user.email)){
+                alert("Veuillez enter une Adress mail valide !");
+                return;
+            }
+              if(!this.user.password){                    
+                alert("Password required!");
+                return;
+            }
+              if(this.user.password != this.user.repeatPassword){                    
+                alert("Les mots de passes ne correspondent pas  !");
+                return;
+            }
+            return true;
+
+        },
+        signup(){
+            if(this.checkValidation()){
+                axios.post(this.$hostname +"/api/user/registration", this.user)
+                    .then(response => {
+                        if (response.data.userId > 0){
+                            alert("Vous êtes maintenant inscrit(e)!")
+                            .then(() => {
+                                this.$router.push({name:"login"});
+                    
+                            });
+                        }else{
+                            alert("Error : Something went wrong.");
+                        }
+                    })
+                    .catch(error=>{
+                        if (error.response){
+                            alert(error.response.data);
+                        }
+                    });
+            }
+
+        },
         Toggle() {
             var temp = document.getElementById("typepass") ;
             var temp2 = document.getElementById("typepass2");

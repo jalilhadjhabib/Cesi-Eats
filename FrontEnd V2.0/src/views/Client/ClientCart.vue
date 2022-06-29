@@ -72,7 +72,7 @@
               </div>
            
           <tr>
-            <td style="padding-top: 50px;"><a href="/client/displayarticle" class="btn btn-warning"><md-button class="md-primary" ><i class="fa fa-angle-left"></i> Continue vos achats</md-button></a></td>
+            <td style="padding-top: 50px;"><a href="#/client/displayarticle" class="btn btn-warning"><md-button class="md-primary" ><i class="fa fa-angle-left"></i> Continue vos achats</md-button></a></td>
             <td colspan="0" class="hidden-xs"></td>
             <td  class="hidden-xm text-center"><strong><p style="width: 120px;padding-top: 50px;">Total: {{this.order.total}} DA</p></strong></td>
             

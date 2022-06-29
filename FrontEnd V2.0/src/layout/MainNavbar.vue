@@ -35,7 +35,7 @@
                   class="md-list-item-router md-list-item-container md-button-clean dropdown"
                 >
                   <div class="md-list-item-content" style="padding-right: 20px;">
-                    <a href="#/login">
+                    <a href="/login">
                       <md-button style="box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;"
                         slot="title"
                         class="md-button md-button-link md-white md-simple"
@@ -53,7 +53,7 @@
                   class="md-list-item-router md-list-item-container md-button-clean dropdown"
                 >
                   <div class="md-list-item-content">
-                    <a href="#/register">
+                    <a href="/register">
                       <md-button style="box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;"
                         slot="title"
                         class="md-button md-button-link md-white md-simple"

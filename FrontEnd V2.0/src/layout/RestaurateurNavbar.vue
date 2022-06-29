@@ -8,7 +8,7 @@
   >
     <div class="md-toolbar-row md-collapse-lateral" >
       <div class="md-toolbar-section-start">
-        <a href="#/restaurateur">
+        <a href="/restaurateur">
           <img alt="Vue logo" src="@/assets/logo.png" class="logoimg" style="width: 15%;">
         </a>
       </div>
@@ -97,22 +97,22 @@
                             <ul class="dropdown-menu dropdown-menu-right">
                               <center><li class="dropdown-header">Paramètre</li></center>
                               <li>
-                                <a href="#/restaurateur/addmenu" class="dropdown-item"
+                                <a href="/restaurateur/addmenu" class="dropdown-item"
                                   >Ajouter un Menu</a
                                 >
                               </li>
                               <li>
-                                <a href="#/restaurateur/displaymenu" class="dropdown-item"
+                                <a href="/restaurateur/displaymenu" class="dropdown-item"
                                   >Tableau d'édition des menus</a
                                 >
                               </li>
                               <li>
-                                <a href="#/restaurateur/displayarticle" class="dropdown-item"
+                                <a href="/restaurateur/displayarticle" class="dropdown-item"
                                   >Tableau d'édition des articles</a
                                 >
                               </li>
                               <li>
-                                <a href="#/restaurateur/displayCommandes" class="dropdown-item"
+                                <a href="/restaurateur/displayCommandes" class="dropdown-item"
                                   >Tableau d'édition des commandes</a
                                 >
                               </li>

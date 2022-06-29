@@ -81,7 +81,7 @@
             <div class="md-layout">
               <div class="md-layout-item md-medium-size-33 md-small-size-100">
                 <div class="team-player">
-                  <a href="#/restaurateur/register">
+                  <a href="/restaurateur/register">
                   <md-card class="md-card-plain">
                     <div class="md-layout-item md-size-50 mx-auto">
                       <img
@@ -106,7 +106,7 @@
               </div>
               <div class="md-layout-item md-medium-size-33 md-small-size-100">
                 <div class="team-player">
-                  <a href="#/register">
+                  <a href="/register">
                   <md-card class="md-card-plain">
                     <div class="md-layout-item md-size-50 mx-auto">
                       <img
@@ -131,7 +131,7 @@
               </div>
               <div class="md-layout-item md-medium-size-33 md-small-size-100">
                 <div class="team-player">
-                  <a href="#/livreur/register">
+                  <a href="/livreur/register">
                   <md-card class="md-card-plain">
                     <div class="md-layout-item md-size-50 mx-auto">
                       <img

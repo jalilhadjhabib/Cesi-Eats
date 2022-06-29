@@ -8,7 +8,7 @@
   >
     <div class="md-toolbar-row md-collapse-lateral" >
       <div class="md-toolbar-section-start">
-        <a href="#/livreur">
+        <a href="/livreur">
           <img alt="Vue logo" src="@/assets/logo.png" class="logoimg" style="width: 15%;">
         </a>
       </div>
@@ -97,7 +97,7 @@
                             <ul class="dropdown-menu dropdown-menu-right">
                               <center><li class="dropdown-header">Paramètre</li></center>
                               <li>
-                                <a href="#/livreur/listcommande" class="dropdown-item"
+                                <a href="/livreur/listcommande" class="dropdown-item"
                                   >La liste des commandes</a
                                 >
                               </li>

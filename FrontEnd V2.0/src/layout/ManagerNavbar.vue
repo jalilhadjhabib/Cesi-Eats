@@ -8,7 +8,7 @@
   >
     <div class="md-toolbar-row md-collapse-lateral" >
       <div class="md-toolbar-section-start">
-        <a href="#/manager">
+        <a href="/manager">
           <img alt="Vue logo" src="@/assets/logo.png" class="logoimg" style="width: 15%;">
         </a>
       </div>
@@ -97,7 +97,7 @@
                             <ul class="dropdown-menu dropdown-menu-right">
                               <center><li class="dropdown-header">Paramètre</li></center>
                               <li>
-                                <a href="#/manager/clientlist" class="dropdown-item"
+                                <a href="/manager/clientlist" class="dropdown-item"
                                   >Liste des clients</a
                                 >
                               </li>

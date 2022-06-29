@@ -20,17 +20,15 @@ module.exports = {
 
 ## Caching
 
-Cache options of [babel-loader](https://github.com/babel/babel-loader#options) is enabled by default and cache is stored in `<projectRoot>/node_modules/.cache/babel-loader`.
+[cache-loader](https://github.com/webpack-contrib/cache-loader) is enabled by default and cache is stored in `<projectRoot>/node_modules/.cache/babel-loader`.
 
 ## Parallelization
 
 [thread-loader](https://github.com/webpack-contrib/thread-loader) is enabled by default when the machine has more than 1 CPU cores. This can be turned off by setting `parallel: false` in `vue.config.js`.
 
-`parallel` should be set to `false` when using Babel in combination with non-serializable loader options, such as regexes, dates and functions. These options would not be passed correctly to `babel-loader` which may lead to unexpected errors.
-
 ## Installing in an Already Created Project
 
-```bash
+``` sh
 vue add babel
 ```
 
@@ -38,3 +36,4 @@ vue add babel
 
 - `config.rule('js')`
 - `config.rule('js').use('babel-loader')`
+- `config.rule('js').use('cache-loader')`

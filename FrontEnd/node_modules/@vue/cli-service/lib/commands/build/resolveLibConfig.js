@@ -9,8 +9,6 @@ module.exports = (api, { entry, name, formats, filename, 'inline-vue': inlineVue
     process.exit(1)
   }
 
-  const vueMajor = require('../../util/getVueMajor')(api.getCwd())
-
   const fullEntryPath = api.resolve(entry)
 
   if (!fs.existsSync(fullEntryPath)) {
@@ -68,7 +66,6 @@ module.exports = (api, { entry, name, formats, filename, 'inline-vue': inlineVue
             inject: false,
             filename: 'demo.html',
             libName,
-            vueMajor,
             assetsFileName: filename,
             cssExtract: config.plugins.has('extract-css')
           }])
@@ -131,11 +128,6 @@ module.exports = (api, { entry, name, formats, filename, 'inline-vue': inlineVue
       // document.currentScript.src.
       publicPath: ''
     })
-
-    if (format === 'commonjs2') {
-      // #6188
-      delete rawConfig.output.library
-    }
 
     return rawConfig
   }

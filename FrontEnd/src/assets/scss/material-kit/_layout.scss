@@ -1,0 +1,23 @@
+.md-layout-item{
+  padding-right: 15px;
+  padding-left: 15px;
+}
+.md-layout-item .info{
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+}
+.md-layout-item .info:hover{
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+  transition: 1000ms;
+}
+.md-layout-item .team-player{
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+}
+.md-layout-item .team-player:hover{
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+  transition: 1000ms;
+}
+#newsletter{
+box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}

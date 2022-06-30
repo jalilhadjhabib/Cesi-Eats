@@ -191,6 +191,182 @@
           </div>
         </div>
       </div>
+            <div class="section text-center">
+        <div class="container">
+          <h2 class="title">Notre équipe !</h2>
+          <div class="team">
+            <div class="md-layout">
+              <div class="md-layout-item md-medium-size-33 md-small-size-100">
+                <div class="team-player">
+                  <md-card class="md-card-plain">
+                    <div class="md-layout-item md-size-50 mx-auto">
+                      <img
+                        :src="djamel"
+                        alt="Thumbnail Image"
+                        class="img-raised rounded-circle img-fluid"
+                      />
+                    </div>
+                    <h4 class="card-title">
+                      Mohamed Djamel Hemch
+                      <br />
+                      <small class="card-description text-muted">BackEnd - Sql</small>
+                    </h4>
+
+                    <md-card-content>
+                      <p class="card-description" style="padding-bottom: 20px;font-weight: 900;">
+                        Chef de projet tayeb
+                      </p>
+                    </md-card-content>
+
+                    <md-card-actions class="text-center">
+                      <md-button
+                        href="https://www.instagram.com/djamel.thrash/"
+                        class="md-just-icon md-simple"
+                      >
+                        <i class="fab fa-instagram"></i>
+                      </md-button>
+                    </md-card-actions>
+                  </md-card>
+                </div>
+              </div>
+              <div class="md-layout-item md-medium-size-33 md-small-size-100">
+                <div class="team-player">
+                  <md-card class="md-card-plain">
+                    <div class="md-layout-item md-size-50 mx-auto">
+                      <img
+                        :src="karim"
+                        alt="Thumbnail Image"
+                        class="img-raised rounded-circle img-fluid"
+                      />
+                    </div>
+                    <h4 class="card-title">
+                      Karim Benoumeur Kanoun
+                      <br />
+                      <small class="card-description text-muted"
+                        >Assistant BackEnd - Sql</small
+                      >
+                    </h4>
+
+                    <md-card-content>
+                      <p class="card-description" style="font-weight: 900;">
+                        Je programme depuis Colibri tqt
+                      </p>
+                    </md-card-content>
+
+                    <md-card-actions class="text-center">
+                      <md-button
+                        href="https://www.instagram.com/karimkanoun_/"
+                        class="md-just-icon md-simple"
+                      >
+                        <i class="fab fa-instagram"></i>
+                      </md-button>
+                    </md-card-actions>
+                  </md-card>
+                </div>
+              </div>
+              <div class="md-layout-item md-medium-size-33 md-small-size-100">
+                <div class="team-player">
+                  <md-card class="md-card-plain">
+                    <div class="md-layout-item md-size-50 mx-auto">
+                      <img
+                        :src="jalil"
+                        alt="Thumbnail Image"
+                        class="img-raised rounded-circle img-fluid"
+                      />
+                    </div>
+                    <h4 class="card-title">
+                      Abdel Djalil Hadj Habib
+                      <br />
+                      <small class="card-description text-muted">FrontEnd - VueJS</small>
+                    </h4>
+
+                    <md-card-content>
+                      <p class="card-description" style="padding-bottom: 20px;font-weight: 900;">
+                        Zewa9 Tbi3
+                      </p>
+                    </md-card-content>
+
+                    <md-card-actions class="text-center">
+                      <md-button
+                        href="https://www.instagram.com/jalil_hadjhabib/"
+                        class="md-just-icon md-simple"
+                      >
+                        <i class="fab fa-instagram"></i>
+                      </md-button>
+                    </md-card-actions>
+                  </md-card>
+                </div>
+              </div>
+              <div class="md-layout-item md-medium-size-33 md-small-size-100">
+                <div class="team-player">
+                  <md-card class="md-card-plain">
+                    <div class="md-layout-item md-size-50 mx-auto">
+                      <img
+                        :src="said"
+                        alt="Thumbnail Image"
+                        class="img-raised rounded-circle img-fluid"
+                      />
+                    </div>
+                    <h4 class="card-title">
+                      Said Amokrane Belgacem
+                      <br />
+                      <small class="card-description text-muted">BackEnd - MongoDB</small>
+                    </h4>
+
+                    <md-card-content>
+                      <p class="card-description" style="font-weight: 900;">
+                        Go turquie après la soutenance
+                      </p>
+                    </md-card-content>
+
+                    <md-card-actions class="text-center">
+                      <md-button
+                        href="https://www.instagram.com/saidamokranebelgacem/"
+                        class="md-just-icon md-simple"
+                      >
+                        <i class="fab fa-instagram"></i>
+                      </md-button>
+                    </md-card-actions>
+                  </md-card>
+                </div>
+              </div>
+                            <div class="md-layout-item md-medium-size-33 md-small-size-100">
+                <div class="team-player">
+                  <md-card class="md-card-plain">
+                    <div class="md-layout-item md-size-50 mx-auto">
+                      <img
+                        :src="shoukry"
+                        alt="Thumbnail Image"
+                        class="img-raised rounded-circle img-fluid"
+                      />
+                    </div>
+                    <h4 class="card-title">
+                      Shoukry Mohamed Badani
+                      <br />
+                      <small class="card-description text-muted">Assistant BackEnd - MongoDB</small>
+                    </h4>
+
+                    <md-card-content>
+                      <p class="card-description" style="padding-bottom: 20px;font-weight: 900;">
+                        On fait zehma on travaille
+                      </p>
+                    </md-card-content>
+
+                    <md-card-actions class="text-center">
+                      <md-button
+                        href="https://www.instagram.com/shoukry_2x67/"
+                        class="md-just-icon md-simple"
+                      >
+                        <i class="fab fa-instagram"></i>
+                      </md-button>
+                    </md-card-actions>
+                  </md-card>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -214,7 +390,27 @@ export default {
     livreur: {
       type: String,
       default: require("@/assets/img/livreur.jpg")
-    }
+    },
+    djamel: {
+      type: String,
+      default: require("@/assets/img/djamel.jpg")
+    },
+    jalil: {
+      type: String,
+      default: require("@/assets/img/jalil.jpg")
+    },
+    said: {
+      type: String,
+      default: require("@/assets/img/said.jpg")
+    },
+    karim: {
+      type: String,
+      default: require("@/assets/img/karim.jpg")
+    },
+    shoukry: {
+      type: String,
+      default: require("@/assets/img/shoukry.jpg")
+    },
   },
   data() {
     return {

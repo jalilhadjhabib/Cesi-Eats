@@ -8,27 +8,7 @@
           >
             <login-card header-color="black">
               <h4 slot="title" class="card-title">Inscrivez-vous</h4>
-              <md-button
-                slot="buttons"
-                href="javascript:void(0)"
-                class="md-just-icon md-simple md-white"
-              >
-                <i class="fab fa-facebook-square"></i>
-              </md-button>
-              <md-button
-                slot="buttons"
-                href="javascript:void(0)"
-                class="md-just-icon md-simple md-white"
-              >
-                <i class="fab fa-twitter"></i>
-              </md-button>
-              <md-button
-                slot="buttons"
-                href="javascript:void(0)"
-                class="md-just-icon md-simple md-white"
-              >
-                <i class="fab fa-google-plus-g"></i>
-              </md-button>
+              
               <p slot="description" class="description">Ou</p>
               <md-field class="md-form-group" slot="inputs">
                 <md-icon>face</md-icon>
@@ -159,9 +139,10 @@ export default {
                 axios.post(this.$hostname +"/api/user/registration", this.user)
                     .then(response => {
                         if (response.data.userId > 0){
+                          this.$router.push({name:"login"});
                             alert("Vous êtes maintenant inscrit(e)!")
                             .then(() => {
-                                this.$router.push({name:"login"});
+                                
                                 alert("Connecter vous!")
                             });
                         }else{

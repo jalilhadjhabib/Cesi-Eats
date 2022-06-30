@@ -1,8 +1,8 @@
 import Vue from "vue";
 import Router from "vue-router";
 import Home from "./views/Home.vue";
-import Login from "./views/Login.vue";
-import Profile from "./views/Profile.vue";
+import Login from "./views/Auth/Login.vue";
+import Profile from "./views/Auth/Profile.vue";
 import MainNavbar from "./layout/MainNavbar.vue";
 import MainFooter from "./layout/MainFooter.vue";
 import Restaurateur from "./views/Restaurateur/RestaurateurHome.vue";
@@ -28,14 +28,15 @@ import LivreurRegisterNavbar from "./layout/LivreurRegisterNavbar.vue";
 import ManagerNavbar from "./layout/ManagerNavbar.vue";
 import Manager from "./views/Manager/Manager.vue";
 import ManagerClientList from "./views/Manager/ManagerClientList.vue";
-import ForgetPassword from "./views/ForgetPassword.vue";
-import Register from "./views/Register.vue";
+import ForgetPassword from "./views/Auth/ForgetPassword.vue";
+import Register from "./views/Auth/Register.vue";
 
 
 
 Vue.use(Router);
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path: "/",

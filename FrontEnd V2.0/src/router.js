@@ -28,6 +28,7 @@ import LivreurRegisterNavbar from "./layout/LivreurRegisterNavbar.vue";
 import ManagerNavbar from "./layout/ManagerNavbar.vue";
 import Manager from "./views/Manager/Manager.vue";
 import ManagerClientList from "./views/Manager/ManagerClientList.vue";
+import ManagerCommandeList from "./views/Manager/ManagerCommandeList.vue";
 import ForgetPassword from "./views/Auth/ForgetPassword.vue";
 import Register from "./views/Auth/Register.vue";
 
@@ -230,6 +231,15 @@ export default new Router({
       path: "/manager/clientlist",
       name: "managerclientlist",
       components: { default: ManagerClientList, header: ManagerNavbar, footer: MainFooter },
+      props: {
+        header: { colorOnScroll: 10 },
+        footer: { backgroundColor: "black" }
+      }
+    },
+    {
+      path: "/manager/commandelist",
+      name: "managercommandelist",
+      components: { default: ManagerCommandeList, header: ManagerNavbar, footer: MainFooter },
       props: {
         header: { colorOnScroll: 10 },
         footer: { backgroundColor: "black" }

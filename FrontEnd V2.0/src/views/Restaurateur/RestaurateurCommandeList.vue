@@ -100,7 +100,8 @@
 </template>
 <script>
 import OrderService from "@/services/OrderService";
-
+import { io } from 'socket.io-client';
+import NotificationService from "@/services/NotificationService";
 // import JQuery from 'jquery'
 // window.$ = JQuery
 
@@ -135,6 +136,7 @@ export default {
       Orders: [],
       currentTutorial: null,
       currentIndex: -1,
+      socket : io('http://localhost:4000', { transports: ['websocket', 'polling', 'flashsocket']}),
       title: ""
     };
   },
@@ -163,7 +165,7 @@ export default {
       OrderService.delete(id)
       .then(response => {
             console.log(response.data);
-            this.$router.go();
+            // this.$router.go();
 
         })
         .catch(e => {
@@ -171,10 +173,39 @@ export default {
         });
     },
     AcceptOrder(id){
+       this.socket.on('connect', connectUser);
+        var sio = this.socket;
+        function connectUser () {  // Called whenever a user signs in
+        var userId = 20 // Retrieve userId
+        if (!userId) return;
+        sio.emit('userConnected',  userId);
+      }
+      var sio = this.socket;
+      var NotificationData = {
+        type_user : "restaurateur",
+        id_user : 30,
+        message : "Vous avez une nouvelle commande a livrée"
+      }
       OrderService.updateStateRestaurateurOrder(id)
       .then(response => {
             console.log(response.data);
-            this.$router.go();
+            var statut_restaurant  = response.data.statut_restaurant;
+            var statut_livreur = response.data.statut_livreur;
+            NotificationService.post(NotificationData)
+            .then(response => {
+              console.log(response.data);
+              sio.emit('sendnotif',{
+                  id_user : NotificationData.id_user,
+                  type_user : NotificationData.type_user,
+                  message : NotificationData.message
+                });
+              sio.emit('realtimemanagercommande',{
+                statut_restaurant : 1,
+                id :id 
+              });
+            }).catch(e => {
+            console.log(e);
+            });  
         })
         .catch(e => {
             console.log(e);

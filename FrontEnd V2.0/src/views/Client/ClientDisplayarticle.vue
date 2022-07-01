@@ -175,7 +175,6 @@ export default {
         cartCookie = CartService.setCookie('testuser',cart,7);
       }
       else {
-        cart.push(cartCookie[0]);
         cartCookie = CartService.setCookie('testuser',cart,7);
       }
       

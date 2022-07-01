@@ -58,7 +58,7 @@
                             </md-button>
                             <ul class="dropdown-menu dropdown-menu-right">
                               <center><li class="dropdown-header">Vos notifications</li></center>
-                            <li>
+                            <li id="notif">
                                 <p :class="{ active: index == currentIndex }"
           v-for="(Notification, index) in Notifications"
           :key="index" style="color:black;margin:20px;" class="dropdown-item"
@@ -154,6 +154,9 @@ function resizeThrottler(actualResizeHandler) {
 }
 import NotificationService from "@/services/NotificationService";
 import MobileMenu from "@/layout/MobileMenu";
+import { io } from 'socket.io-client';
+import JQuery from 'jquery';
+window.$ = JQuery
 export default {
   components: {
     MobileMenu
@@ -185,7 +188,7 @@ export default {
       currentTutorial: null,
       currentIndex: -1,
       title: "",
-
+ socket : io('http://localhost:4000', { transports: ['websocket', 'polling', 'flashsocket']}),
       extraNavClasses: "",
       toggledClass: false
     };
@@ -198,7 +201,20 @@ export default {
   },
   methods: {
     retrieveNotifications() {
-        NotificationService.getAll()
+      var sio = this.socket;
+        sio.on('connect', connectUser);
+        function connectUser () {  // Called whenever a user signs in
+        var userId = 10 // Retrieve userId
+        if (!userId) return;
+        sio.emit('userConnected',  userId);
+      }
+      sio.on('receivenotif',function(data){
+        $("#notif").prepend(`
+        <p style="color:black;margin:20px;" class="dropdown-item">`+data.message+`</p>
+        `);
+        console.log(data);
+      });
+        NotificationService.getbyiduser(10)
         .then(response => {
             this.Notifications = response.data ;
             console.log(response.data);

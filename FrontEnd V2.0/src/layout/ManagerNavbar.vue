@@ -101,7 +101,11 @@
                                   >Liste des clients</a
                                 >
                               </li>
-                              
+                              <li>
+                                <a href="/manager/commandelist" class="dropdown-item"
+                                  >Liste des commandes</a
+                                >
+                              </li>
                               <li class="dropdown-divider"></li>
                               <li>
                                 <a href="#" class="dropdown-item"

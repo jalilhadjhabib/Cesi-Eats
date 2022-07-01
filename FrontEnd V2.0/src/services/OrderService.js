@@ -3,6 +3,9 @@ class OrderService {
   getAll() {
     return http.get("/order/getall");
   }
+  get(id){
+    return http.get(`/order/get/${id}`);
+  }
   post(data){
     return http.post("/order/post",data);
   }

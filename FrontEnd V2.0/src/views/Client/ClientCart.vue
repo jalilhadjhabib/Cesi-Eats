@@ -54,7 +54,7 @@
             <td style="font-weight: bolder;" data-th="Price">{{Article.price}} DA</td>
             <td><img class="img-fluid" style="width:500px;height:100px;margin: 10px;" :src="'http://127.0.0.1:4000\\'+Article.picture.path" alt="Card image cap"></td>
             <td class="actions" data-th="">
-              <md-button class="md-danger"><md-icon>delete</md-icon></md-button>								
+              <md-button   class="md-danger"><md-icon>delete</md-icon></md-button>								
             </td>
           </tr>            
         </tbody>
@@ -146,10 +146,11 @@
 import ArticleService from "@/services/ArticleService";
 import CartService from "@/services/CartService";
 import OrderService from "@/services/OrderService";
+import { io } from 'socket.io-client';
 import NotificationService from "@/services/NotificationService";
 import JQuery from 'jquery'
 window.$ = JQuery
-var ids_cart = CartService.getCookie('testuser');
+
 import { Modal } from "@/components";
 
 export default {
@@ -181,6 +182,7 @@ components: {
                classicModal: false,
 
       Articles: [],
+      ids_cart :[],
       order: {
         id: null,
         ids_article :[],
@@ -190,6 +192,7 @@ components: {
         payementMethod : "",
         published: false
       },
+      socket : io('http://localhost:4000', { transports: ['websocket', 'polling', 'flashsocket']}),
       currentTutorial: null,
       currentIndex: -1,
       title: ""
@@ -207,6 +210,14 @@ components: {
       this.classicModal = false;
     },
     retrieveArticles() {
+      var sio = this.socket;
+     var ids_cart = CartService.getCookie('testuser');
+       sio.on('connect', connectUser);
+        function connectUser () {  // Called whenever a user signs in
+        var userId = 50 // Retrieve userId
+        if (!userId) return;
+       sio.emit('userConnected',  userId);
+      }
         for (var key in ids_cart){
             var value = ids_cart[key];
             ArticleService.get(value)
@@ -233,17 +244,19 @@ components: {
       };
       var NotificationData = {
         type_user : "restaurateur",
-        id_restaurant : 'testidrestaurant',
-        message : "une Commande de hamster"
+        id_user : 20,
+        message : "une nouvelle Commande"
       }
+      var sio = this.socket;
       OrderService.post(data)
         .then(response => {
           console.log(response.data);
+              sio.emit('treatnewcommand', response.data.order.infos._id);
+              sio.emit('sendnotif', NotificationData);
             NotificationService.post(NotificationData)
             .then(response => {
-              
               console.log(response.data);
-            }).catch(e => {
+            }).catch(e => { 
             console.log(e);
             });  
         })
@@ -251,9 +264,12 @@ components: {
           console.log(e);
         });
     }
+    
   },
   mounted() {
     this.retrieveArticles();
+    this.ids_cart = CartService.getCookie('testuser');
+
   }
 };
 </script>

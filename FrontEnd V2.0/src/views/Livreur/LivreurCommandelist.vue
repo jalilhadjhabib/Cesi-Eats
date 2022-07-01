@@ -112,9 +112,10 @@
 
 <script>
 import OrderService from "@/services/OrderService";
-
-// import JQuery from 'jquery'
-// window.$ = JQuery
+import { io } from 'socket.io-client';
+import NotificationService from "@/services/NotificationService";
+import JQuery from 'jquery'
+window.$ = JQuery
 
 export default {
   bodyClass: "landing-page",
@@ -140,6 +141,7 @@ export default {
     return {
                classicModal: false,
 
+      socket : io('http://localhost:4000', { transports: ['websocket', 'polling', 'flashsocket']}),
       Orders: [],
       currentTutorial: null,
       currentIndex: -1,
@@ -175,6 +177,18 @@ export default {
         });
     },
   AcceptOrder(id){
+      var sio = this.socket;
+      var NotificationData = {
+        type_user : "restaurateur",
+        id_user : 20,
+        message : "une commande est prise en charge"
+      }
+    sio.on('connect', connectUser);
+        function connectUser () {  // Called whenever a user signs in
+        var userId = 30 // Retrieve userId
+        if (!userId) return;
+       sio.emit('userConnected',  userId);
+      }
     var data = {
         state : 1,
         id_livreur : 'testidlivreur'
@@ -182,24 +196,79 @@ export default {
     OrderService.updateStateLivreurOrder(id,data)
     .then(response => {
             console.log(response.data);
-            this.$router.go();
+            NotificationService.post(NotificationData)
+            .then(response => {
+              console.log(response.data);
+              sio.emit('sendnotif',{
+                  id_user : NotificationData.id_user,
+                  type_user : NotificationData.type_user,
+                  message : NotificationData.message
+                });
+              sio.emit('realtimemanagercommande',{
+                statut_livreur : 1,
+                id :id 
+              });
+            }).catch(e => {
+            console.log(e);
+            });  
+            // this.$router.go();
         })
         .catch(e => {
           console.log(e);
         });
   },
   AcquitOrder(id){
+    var sio = this.socket;
+      var NotificationData = {
+        type_user : "restaurateur",
+        id_user : 20,
+        message : "une commande est livrée"
+      }
+      var NotificationDataClient = {
+        type_user : "client",
+        id_user : 10,
+        message : "votre commande est prete"
+      }
+    sio.on('connect', connectUser);
+        function connectUser () {  // Called whenever a user signs in
+        var userId = 50 // Retrieve userId
+        if (!userId) return;
+       sio.emit('userConnected',  userId);
+      }
     var data = {
         state : 2,
       };
     OrderService.updateStateLivreurOrder(id,data)
     .then(response => {
             console.log(response.data);
-            this.$router.go();
+            NotificationService.post(NotificationData)
+            .then(response => {
+              console.log(response.data);
+              sio.emit('sendnotif',{
+                  id_user : NotificationData.id_user,
+                  type_user : NotificationData.type_user,
+                  message : NotificationData.message
+                });
+              sio.emit('realtimemanagercommande',{
+                statut_livreur : 2,
+                id :id 
+              });
+            }).catch(e => {
+            console.log(e);
+            });  
+            // this.$router.go();
         })
         .catch(e => {
           console.log(e);
         });
+            NotificationService.post(NotificationDataClient)
+            .then(response => {
+              sio.emit('sendnotif',NotificationDataClient);
+            console.log(response.data)
+            }).catch(e => {
+            console.log(e);
+            });
+
     }
           },
   mounted() {

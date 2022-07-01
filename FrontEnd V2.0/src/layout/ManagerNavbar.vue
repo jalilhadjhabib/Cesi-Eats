@@ -106,6 +106,11 @@
                                   >Liste des commandes</a
                                 >
                               </li>
+                              <li>
+                                <a href="/manager/satistiques" class="dropdown-item"
+                                  >Statistiques</a
+                                >
+                              </li>
                               <li class="dropdown-divider"></li>
                               <li>
                                 <a href="#" class="dropdown-item"

@@ -238,9 +238,9 @@ components: {
         payementMethod: this.order.payementMethod,
         date : Date.now(),
         ids_article : this.order.ids_article,
-        price : this.order.total,
-        id_restaurant : 'testidrestaurant',
-        id_client : 'testidclient'
+        total : this.order.total,
+        id_restaurant : '20',
+        id_client : '10'
       };
       var NotificationData = {
         type_user : "restaurateur",

@@ -29,6 +29,8 @@ import ManagerNavbar from "./layout/ManagerNavbar.vue";
 import Manager from "./views/Manager/Manager.vue";
 import ManagerClientList from "./views/Manager/ManagerClientList.vue";
 import ManagerCommandeList from "./views/Manager/ManagerCommandeList.vue";
+import ManagerSatistiques from "./views/Manager/ManagerSatistiques.vue";
+
 import ForgetPassword from "./views/Auth/ForgetPassword.vue";
 import Register from "./views/Auth/Register.vue";
 
@@ -240,6 +242,15 @@ export default new Router({
       path: "/manager/commandelist",
       name: "managercommandelist",
       components: { default: ManagerCommandeList, header: ManagerNavbar, footer: MainFooter },
+      props: {
+        header: { colorOnScroll: 10 },
+        footer: { backgroundColor: "black" }
+      }
+    },
+    {
+      path: "/manager/satistiques",
+      name: "managersatistiques",
+      components: { default: ManagerSatistiques, header: ManagerNavbar, footer: MainFooter },
       props: {
         header: { colorOnScroll: 10 },
         footer: { backgroundColor: "black" }

@@ -55,4 +55,8 @@ io.on('connect', function (socket) {
         console.log(data);
         io.emit('getcommandesatut',data);
     })
+    socket.on('treatnewcommand',function (data){
+        console.log(data);
+        io.emit('getnewcommand',data);
+    });
   });

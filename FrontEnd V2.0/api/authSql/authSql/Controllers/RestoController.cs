@@ -16,24 +16,24 @@ namespace authSql.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UserController : ControllerBase
+    public class RestoController : ControllerBase
     {
         private IConfiguration _config;
-        IUserRepository _oUserRepository = null;
+        IRestoRepository _oRestoRepository = null;
 
-        public UserController(IConfiguration config, IUserRepository oUserRepository) {
+        public RestoController(IConfiguration config, IRestoRepository oRestoRepository) {
 
             _config = config;
-            _oUserRepository = oUserRepository;
+            _oRestoRepository = oRestoRepository;
 
         }
         [HttpPost]
         [Route("registration")]
-        public async Task<IActionResult> Registration([FromBody] User model)
+        public async Task<IActionResult> Registration([FromBody] Resto model)
         {
             try
             {
-                model = await _oUserRepository.Save(model);
+                model = await _oRestoRepository.Save(model);
                 return Ok(model);
             }
             catch (Exception ex)
@@ -48,22 +48,22 @@ namespace authSql.Controllers
         {
             try
             {
-                User model = new User()
+                Resto model = new Resto()
                 {
                     Email=email,
                     Password=password
                 };
-                var user = await AuthenticationUser(model);
-                if(user.UserId == 0) return StatusCode((int)HttpStatusCode.NotFound, "Invalid user");
-                user.Token = GenerateToken(model);
-                return Ok(user);
+                var Resto = await AuthenticationResto(model);
+                if(Resto.RestoId == 0) return StatusCode((int)HttpStatusCode.NotFound, "Invalid Resto");
+                Resto.Token = GenerateToken(model);
+                return Ok(Resto);
             }
             catch (Exception ex)
             {
                 return StatusCode((int)HttpStatusCode.InternalServerError, ex.Message);
             }
         }
-        private String GenerateToken(User model)
+        private String GenerateToken(Resto model)
         {
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
@@ -77,9 +77,9 @@ namespace authSql.Controllers
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
 
-        private async Task<User> AuthenticationUser(User user)
+        private async Task<Resto> AuthenticationResto(Resto Resto)
         {
-            return await _oUserRepository.GetByEmailPassword(user);
+            return await _oRestoRepository.GetByEmailPassword(Resto);
         }
     }
 }

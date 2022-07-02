@@ -5,15 +5,19 @@ using System.Threading.Tasks;
 
 namespace authSql.Models
 {
-    public class Client
+    public class Resto
     {
-        public int ClientId { get; set; }
-        public string Name { get; set; }
-        public string MailStatus { get; set; }
+        public int RestoId { get; set; }
+        public string RestoName { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
+        public string EmailStatus { get; set; }
         public string Address { get; set; }
         public string Phone { get; set; }
         public string CreditCard { get; set; }
         public string ConnectionStatus { get; set; }
+
+        public string Token { get; set; }
 
         public string Message { get; set; }
     }

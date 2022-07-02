@@ -30,9 +30,11 @@ import Manager from "./views/Manager/Manager.vue";
 import ManagerClientList from "./views/Manager/ManagerClientList.vue";
 import ManagerCommandeList from "./views/Manager/ManagerCommandeList.vue";
 import ManagerSatistiques from "./views/Manager/ManagerSatistiques.vue";
-
 import ForgetPassword from "./views/Auth/ForgetPassword.vue";
 import Register from "./views/Auth/Register.vue";
+import Developpeur from "./views/Developpeur/Developpeur.vue";
+import DeveloppeurNavbar from "./layout/DeveloppeurNavbar.vue";
+import DeveloppeurDownload from "./views/Developpeur/DeveloppeurDownload.vue";
 
 
 
@@ -271,6 +273,24 @@ export default new Router({
       components: { default: Register, header: MainNavbar, footer: MainFooter },
       props: {
         header: { colorOnScroll: 500 },
+        footer: { backgroundColor: "black" }
+      }
+    },
+    {
+      path: "/developpeur",
+      name: "developpeur",
+      components: { default: Developpeur, header: DeveloppeurNavbar, footer: MainFooter },
+      props: {
+        header: { colorOnScroll: 10 },
+        footer: { backgroundColor: "black" }
+      }
+    },
+    {
+      path: "/developpeur/download",
+      name: "developpeurdownload",
+      components: { default: DeveloppeurDownload, header: DeveloppeurNavbar, footer: MainFooter },
+      props: {
+        header: { colorOnScroll: 10 },
         footer: { backgroundColor: "black" }
       }
     },

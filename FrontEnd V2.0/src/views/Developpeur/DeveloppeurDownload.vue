@@ -29,11 +29,11 @@
         
 
 
-  <center><md-button class="md-danger" @mousedown="downloadFile">Télecharger NavBar composant</md-button></center>
-  <center><md-button class="md-danger" @mousedown="downloadFile">Télecharger Header composant</md-button></center>
-  <center><md-button class="md-danger" @mousedown="downloadFile">Télecharger Footer composant</md-button></center>
-  <center><md-button class="md-danger" @mousedown="downloadFile">Télecharger LoginCard composant</md-button></center>
-  <center><md-button class="md-danger" @mousedown="downloadFile">Télecharger RegisterCard composant</md-button></center>
+  <center><md-button class="md-danger" @mousedown="downloadNavbar">Télecharger NavBar composant</md-button></center>
+  <center><md-button class="md-danger" @mousedown="downloadHeader">Télecharger Header composant</md-button></center>
+  <center><md-button class="md-danger" @mousedown="downloadFooter">Télecharger Footer composant</md-button></center>
+  <center><md-button class="md-danger" @mousedown="downloadLoginCard">Télecharger LoginCard composant</md-button></center>
+  <center><md-button class="md-danger" @mousedown="downloadRegisterCard">Télecharger RegisterCard composant</md-button></center>
 
         </div>
       </div>
@@ -87,7 +87,7 @@ export default {
   },
   
   methods: {
-    downloadFile() {
+    downloadNavbar() {
       const me = this;
       fetch(me.file)
         .then((resp) => resp.blob())
@@ -97,7 +97,75 @@ export default {
           a.style.display = "none";
           a.href = url;
           // the filename you want
-          a.download = me.name || "composant.vue";
+          a.download = me.name || "Navbar.vue";
+          document.body.appendChild(a);
+          a.click();
+          window.URL.revokeObjectURL(url);
+        })
+        .catch(() => alert("oh no!"));
+    },
+    downloadHeader() {
+      const me = this;
+      fetch(me.file)
+        .then((resp) => resp.blob())
+        .then((blob) => {
+          const url = window.URL.createObjectURL(blob);
+          const a = document.createElement("a");
+          a.style.display = "none";
+          a.href = url;
+          // the filename you want
+          a.download = me.name || "Header.vue";
+          document.body.appendChild(a);
+          a.click();
+          window.URL.revokeObjectURL(url);
+        })
+        .catch(() => alert("oh no!"));
+    },
+    downloadFooter() {
+      const me = this;
+      fetch(me.file)
+        .then((resp) => resp.blob())
+        .then((blob) => {
+          const url = window.URL.createObjectURL(blob);
+          const a = document.createElement("a");
+          a.style.display = "none";
+          a.href = url;
+          // the filename you want
+          a.download = me.name || "Footer.vue";
+          document.body.appendChild(a);
+          a.click();
+          window.URL.revokeObjectURL(url);
+        })
+        .catch(() => alert("oh no!"));
+    },
+    downloadLoginCard() {
+      const me = this;
+      fetch(me.file)
+        .then((resp) => resp.blob())
+        .then((blob) => {
+          const url = window.URL.createObjectURL(blob);
+          const a = document.createElement("a");
+          a.style.display = "none";
+          a.href = url;
+          // the filename you want
+          a.download = me.name || "LoginCard.vue";
+          document.body.appendChild(a);
+          a.click();
+          window.URL.revokeObjectURL(url);
+        })
+        .catch(() => alert("oh no!"));
+    },
+    downloadRegisterCard() {
+      const me = this;
+      fetch(me.file)
+        .then((resp) => resp.blob())
+        .then((blob) => {
+          const url = window.URL.createObjectURL(blob);
+          const a = document.createElement("a");
+          a.style.display = "none";
+          a.href = url;
+          // the filename you want
+          a.download = me.name || "RegisterCard.vue";
           document.body.appendChild(a);
           a.click();
           window.URL.revokeObjectURL(url);

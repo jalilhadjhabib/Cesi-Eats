@@ -47,10 +47,10 @@
                     </md-field>
             </div>
         
-<md-button b-button v-b-modal.modal-1
+<md-button b-button 
         class="md-success" 
         data-toggle="modal"
-        data-target="#exampleModal"
+        data-target="#exampleModal" 
         @click="classicModal=true;addClick()">
         Ajouter un Client
     </md-button>
@@ -125,7 +125,7 @@
             placeholder="Carte de crédit"></md-input>
                     </md-field>        
 
-    <md-button type="button" @click="createClick()"
+    <md-button type="button" @click="classicModalHide;createClick()"
     v-if="UserId==0" class="btn btn-Success">
     Ajouter un client
     </md-button>

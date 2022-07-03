@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "H:\\CESI-EATS\\api\\RestSqlApi\\RestSqlApi\\RestSqlApi.csproj": {}
+    "D:\\Cesi-Eats\\BackEnd\\api\\RestSqlApi\\RestSqlApi\\RestSqlApi.csproj": {}
   },
   "projects": {
-    "H:\\CESI-EATS\\api\\RestSqlApi\\RestSqlApi\\RestSqlApi.csproj": {
+    "D:\\Cesi-Eats\\BackEnd\\api\\RestSqlApi\\RestSqlApi\\RestSqlApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "H:\\CESI-EATS\\api\\RestSqlApi\\RestSqlApi\\RestSqlApi.csproj",
+        "projectUniqueName": "D:\\Cesi-Eats\\BackEnd\\api\\RestSqlApi\\RestSqlApi\\RestSqlApi.csproj",
         "projectName": "RestSqlApi",
-        "projectPath": "H:\\CESI-EATS\\api\\RestSqlApi\\RestSqlApi\\RestSqlApi.csproj",
+        "projectPath": "D:\\Cesi-Eats\\BackEnd\\api\\RestSqlApi\\RestSqlApi\\RestSqlApi.csproj",
         "packagesPath": "C:\\Users\\tekmo\\.nuget\\packages\\",
-        "outputPath": "H:\\CESI-EATS\\api\\RestSqlApi\\RestSqlApi\\obj\\",
+        "outputPath": "D:\\Cesi-Eats\\BackEnd\\api\\RestSqlApi\\RestSqlApi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\tekmo\\AppData\\Roaming\\NuGet\\NuGet.Config",

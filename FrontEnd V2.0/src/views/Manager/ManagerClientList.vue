@@ -88,34 +88,23 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
         <md-field style="margin: 0px;">
                       
-                      <md-input v-model="Name"
-            
+                      <md-input v-model="Username"
             placeholder="Nom & Prénom"></md-input>
                     </md-field>
                     <md-field style="margin: 20px;">
                       
-                      <md-input v-model="Mail"
+
+                      <md-input v-model="Email"
             
             placeholder="E-mail"></md-input>
                     </md-field>
                     <md-field style="margin: 20px;">
                       
-                      <md-input v-model="MailStatus"
+                      <md-input v-model="Address"
             
-            placeholder="E-mail Status"></md-input>
+            placeholder="Address"></md-input>
                     </md-field>
                     <md-field style="margin: 20px;">
                       
@@ -137,11 +126,11 @@
                     </md-field>        
 
     <md-button type="button" @click="createClick()"
-    v-if="ClientID==0" class="btn btn-Success">
+    v-if="UserId==0" class="btn btn-Success">
     Ajouter un client
     </md-button>
 
-    <button type="button" v-if="ClientID != 0" @click="updateClick()"
+    <button type="button" v-if="UserId != 0" @click="updateClick()"
     class="btn btn-warning">
     Update Client
     </button>
@@ -193,20 +182,12 @@
             Phone
         </th>
         <th>
+          Address
+        </th>
+        <th>
             CreditCard
         </th>
-        <th>
-            ParainStatus
-        </th>
-        <th>
-            ParainName
-        </th>
-        <th>
-            FilleulStatus
-        </th>
-        <th>
-            FilleulName
-        </th>
+        
         <th>
             ConnectionStatus
         </th>
@@ -215,16 +196,13 @@
         </th>
     </tr>
     <tr v-for="c in client_list" :key="c.id">
-    <td>{{c.ClientID}}</td>
-    <td>{{c.Name}}</td> 
-    <td>{{c.Mail}}</td> 
-    <td>{{c.MailStatus}}</td> 
+    <td>{{c.UserId}}</td>
+    <td>{{c.Username}}</td> 
+    <td>{{c.Email}}</td> 
+    <td>{{c.IsMailConfirmed}}</td> 
     <td>{{c.Phone}}</td> 
+    <td>{{c.Address}}</td> 
     <td>{{c.CreditCard}}</td> 
-    <td>{{c.ParainStatus}}</td> 
-    <td>{{c.ParainName}}</td> 
-    <td>{{c.FilleulStatus}}</td> 
-    <td>{{c.FilleulName}}</td> 
     <td>{{c.ConnectionStatus}}</td>
     <td>
     <b-button b-button v-b-modal.modal-1
@@ -235,7 +213,7 @@
             </svg>
     </b-button>
 
-    <b-button type="button" @click="deleteClick(c.ClientID)"
+    <b-button type="button" @click="deleteClick(c.UserId)"
         class="btn btn-danger mr-1">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
         <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
@@ -305,13 +283,15 @@ export default {
 
         client_list:[],
         modalTitle:"",
-        Name:"",
-        ClientID:0,
-        Mail:"",
-        MailStatus:"",
+        UserId:0,
+        Username:"",       
+        Email:"",
+        IsMailConfirmed:"",
         Password:"",
         CreditCard:"",
         Phone:"",
+        Address:"",
+        user_type:"Client",
         ClientNameFilter:"",
         ClientIDFilter:"",
         clientsWithoutFilter:[],
@@ -358,39 +338,37 @@ methods:{
     },
     addClick(){
 
-        this.modalTitle="Add New Client";
-        this.ClientID=0;
-        this.Name="";
-        this.Name="";
-        this.Mail="";
-        this.MailStatus="";
+        this.modalTitle="Ajouter un Client";
+        this.UserId=0;
+        this.Username="";
+        this.Email="";
         this.Password = "";
+        this.Address="";
         this.Phone = "";
         this.CreditCard = "";
     },
     editClick(c){
         this.modalTitle="Edit Existing Client";
-        this.ClientID=c.ClientID;
-        this.Name=c.Name;
-        this.Mail=c.Mail;
-        this.MailStatus=c.MailStatus;
+        this.UserId=c.UserId;
+        this.Username=c.Username;
+        this.Email=c.Email;
+        this.IsMailConfirmed=c.IsMailConfirmed;
         this.Password = c.Password;
+        this.Address = c.Address;
         this.Phone = c.Phone;
         this.CreditCard = c.CreditCard;
     },
     createClick(){
         axios.post(sqlApi.API_URL+"clients",{
-            Name:this.Name,
-            Mail:this.Mail,
-            MailStatus:this.MailStatus,
+            Username:this.Username,
+            Email:this.Email,
+            IsMailConfirmed:false,
             Password:this.Password,
+            Address:this.Address,
             Phone:this.Phone,
             CreditCard:this.CreditCard,
-            ParainStatus:"none",
-            ParainName:"none",
-            FilleulStatus:"none",
-            FilleulName:"none",
-            ConnectionStatus:false          
+            ConnectionStatus:false,   
+            user_type:"Client"       
         })
         .then((response)=>{
             this.refreshData();
@@ -401,18 +379,16 @@ methods:{
     },
     updateClick(){
         axios.put(sqlApi.API_URL+"clients",{
-            ClientID:this.ClientID,
-            Name:this.Name,
-            Mail:this.Mail,
-            MailStatus:this.MailStatus,
+            UserId:this.UserId,
+            Username:this.Username,
+            Email:this.Email,
+            IsMailConfirmed:this.IsMailConfirmed,
             Password:this.Password,
+            Address:this.Address,
             Phone:this.Phone,
             CreditCard:this.CreditCard,
-            ParainStatus:"none",
-            ParainName:"none",
-            FilleulStatus:"none",
-            FilleulName:"none",
-            ConnectionStatus:false 
+            ConnectionStatus:false,
+             user_type:"Client"
         })
         .then((response)=>{
             this.refreshData();
@@ -422,12 +398,15 @@ methods:{
         
     },
     deleteClick(id){
-        if(!confirm("Are you sure ?")){
+        if(!confirm("Etes-vous sûr? ?")){
             return;
         }
        
-        axios.delete(sqlApi.API_URL+"clients/"+id)
-        .then((response)=>{
+        axios.delete(sqlApi.API_URL+"clients/"+id,{
+         params: {
+         id:this.UserId
+     }
+     })     .then((response)=>{
             this.refreshData();
             alert(response.data);
         });
@@ -438,10 +417,10 @@ methods:{
 
         this.client_list=this.clientsWithoutFilter.filter(
             function(el){
-                return el.ClientID.toString().toLowerCase().includes(
+                return el.UserId.toString().toLowerCase().includes(
                     ClientIDFilter.toString().trim().toLowerCase()
                 )&&
-                el.Name.toString().toLowerCase().includes(
+                el.Username.toString().toLowerCase().includes(
                     ClientNameFilter.toString().trim().toLowerCase()
                 )
             });
